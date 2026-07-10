@@ -1,0 +1,81 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://owieschon.github.io/agent-governance-lab/schemas/preregistration.schema.json",
+  "title": "AGL comparison preregistration",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "$schema",
+    "schema_version",
+    "protocol_id",
+    "registered_at",
+    "title",
+    "question",
+    "confirmatory_contrast",
+    "treatments",
+    "same_candidate_rule",
+    "label_rule",
+    "primary_estimand",
+    "safety_estimand",
+    "analysis_rules",
+    "binding_files",
+    "corpus_case_ids"
+  ],
+  "properties": {
+    "$schema": { "type": "string" },
+    "schema_version": { "const": "agl.comparison-preregistration.v1" },
+    "protocol_id": { "const": "agl-advisory-v-enforced-2026-07-10" },
+    "registered_at": { "type": "string", "format": "date-time" },
+    "title": { "type": "string", "minLength": 1 },
+    "question": { "type": "string", "minLength": 1 },
+    "confirmatory_contrast": { "const": ["L1", "L3"] },
+    "treatments": {
+      "type": "array",
+      "minItems": 4,
+      "maxItems": 4,
+      "prefixItems": [
+        { "$ref": "#/$defs/treatmentL0" },
+        { "$ref": "#/$defs/treatmentL1" },
+        { "$ref": "#/$defs/treatmentSham" },
+        { "$ref": "#/$defs/treatmentL3" }
+      ],
+      "items": false
+    },
+    "same_candidate_rule": { "type": "string", "minLength": 1 },
+    "label_rule": { "type": "string", "minLength": 1 },
+    "primary_estimand": { "$ref": "#/$defs/estimand" },
+    "safety_estimand": { "$ref": "#/$defs/estimand" },
+    "analysis_rules": { "type": "array", "minItems": 5, "items": { "type": "string" } },
+    "binding_files": { "type": "array", "minItems": 8, "uniqueItems": true, "items": { "type": "string" } },
+    "corpus_case_ids": { "type": "array", "minItems": 8, "maxItems": 8, "uniqueItems": true, "items": { "type": "string" } }
+  },
+  "$defs": {
+    "treatment": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["id", "label", "release_rule", "authority", "role"],
+      "properties": {
+        "id": { "type": "string" },
+        "label": { "type": "string", "minLength": 1 },
+        "release_rule": { "type": "string", "minLength": 1 },
+        "authority": { "type": "string", "minLength": 1 },
+        "role": { "type": "string", "minLength": 1 }
+      }
+    },
+    "treatmentL0": { "allOf": [{ "$ref": "#/$defs/treatment" }, { "properties": { "id": { "const": "L0" } } }] },
+    "treatmentL1": { "allOf": [{ "$ref": "#/$defs/treatment" }, { "properties": { "id": { "const": "L1" } } }] },
+    "treatmentSham": { "allOf": [{ "$ref": "#/$defs/treatment" }, { "properties": { "id": { "const": "SHAM" } } }] },
+    "treatmentL3": { "allOf": [{ "$ref": "#/$defs/treatment" }, { "properties": { "id": { "const": "L3" } } }] },
+    "estimand": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["name", "numerator", "denominator", "unit"],
+      "properties": {
+        "name": { "type": "string" },
+        "numerator": { "type": "string" },
+        "denominator": { "type": "string" },
+        "unit": { "const": "case" }
+      }
+    }
+  }
+}

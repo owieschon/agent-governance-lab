@@ -1,0 +1,54 @@
+{
+  "$schema": "../schemas/historical-study.schema.json",
+  "schema_version": "agl.historical-study.v1",
+  "case_id": "historical-stage-1-invalidity",
+  "title": "A completed run set that did not earn a result",
+  "separation": "Historical context only. This case is not part of the synthetic comparison corpus or its denominators.",
+  "design": {
+    "paired": true,
+    "treatments": [
+      {
+        "id": "L0",
+        "label": "task only"
+      },
+      {
+        "id": "L1",
+        "label": "written rules, no mechanical judge"
+      },
+      {
+        "id": "SHAM",
+        "label": "visible deterministic gate, nonblocking"
+      },
+      {
+        "id": "L3",
+        "label": "the same deterministic gate with release authority"
+      }
+    ],
+    "purpose": "Separate task behavior, written instruction, visible observation, and mechanical enforcement."
+  },
+  "historical_record": {
+    "primary_runs": 72,
+    "records_intact": true,
+    "hash_chain_verified": true,
+    "terminal_tree_hashes_recomputed": true
+  },
+  "invalidity_reasons": [
+    "The preregistered variance probe was never dispatched.",
+    "The planned mini-replication was never built.",
+    "Runner and grader used incompatible terminal-tree hash algorithms, so the integrity fence refused every real record.",
+    "The frozen calibration receipt was a placeholder rather than completed calibration evidence."
+  ],
+  "decision": {
+    "status": "NO_CONFIRMATORY_RESULT",
+    "headline_metrics": null,
+    "grading_halted": true,
+    "historical_run_rewritten_as_success": false
+  },
+  "claim_boundary": "The record supports an integrity refusal, not an empirical treatment effect or model-efficacy claim.",
+  "public_snapshot_sources": [
+    "README.md",
+    "METHODOLOGY.md",
+    "RESULTS.md",
+    "docs/SOURCE_PROVENANCE.md"
+  ]
+}

@@ -13,7 +13,9 @@ stays in why.sh, which resolves the path and execs this with it; the body
 lives here so it reads and tests on its own. Lives in the trust layer; not
 agent-editable.
 """
-import json, os, sys
+import json
+import os
+import sys
 
 v = json.load(open(sys.argv[1]))
 did = sys.argv[2]

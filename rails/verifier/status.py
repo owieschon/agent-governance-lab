@@ -13,7 +13,12 @@ The body lives here rather than in a bash heredoc so it is readable and
 testable on its own; status.sh is a thin shim that resolves <root> and execs
 this. Lives in the trust layer; not agent-editable.
 """
-import datetime, glob, json, os, sys
+import datetime
+import glob
+import json
+import os
+import subprocess
+import sys
 
 root = sys.argv[1]
 now = datetime.datetime.now(datetime.timezone.utc)
@@ -42,7 +47,6 @@ def mtime_age(p):
 
 
 def current_tree():
-    import subprocess
     try:
         return subprocess.run(["python3", os.path.join(root, "rails", "verifier", "treehash.py")],
                               capture_output=True, text=True, cwd=root, timeout=30).stdout.strip()
@@ -131,10 +135,18 @@ for i in unlinked:
 # into, never a number reported up a hierarchy or wired to a gate or
 # incentive. A scored, reported rigor metric gets managed, and a managed
 # rigor-score is rigor decay with a green light.
-import subprocess as _sp
 try:
-    _sig = _sp.run(["python3", os.path.join(root, "rails", "verifier", "adjudicate.py"),
-                    "signals", root], capture_output=True, text=True, timeout=30).stdout.strip()
+    _sig = subprocess.run(
+        [
+            "python3",
+            os.path.join(root, "rails", "verifier", "adjudicate.py"),
+            "signals",
+            root,
+        ],
+        capture_output=True,
+        text=True,
+        timeout=30,
+    ).stdout.strip()
 except Exception:
     _sig = ""
 print("\n  signals (precision / attention / defaults):")

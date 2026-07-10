@@ -1,0 +1,259 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://owieschon.github.io/agent-governance-lab/schemas/comparison-case-receipt.schema.json",
+  "title": "AGL comparison case receipt",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "$schema",
+    "schema_version",
+    "protocol_id",
+    "case_id",
+    "title",
+    "family",
+    "expected_label",
+    "label_basis",
+    "public_mechanism_source",
+    "candidate",
+    "treatment_candidate_sha256",
+    "same_candidate_bytes",
+    "precondition",
+    "treatments",
+    "bindings",
+    "receipt_sha256"
+  ],
+  "properties": {
+    "$schema": { "const": "../../schemas/comparison-case-receipt.schema.json" },
+    "schema_version": { "const": "agl.comparison-case-receipt.v1" },
+    "protocol_id": { "const": "agl-advisory-v-enforced-2026-07-10" },
+    "case_id": { "type": "string", "pattern": "^[a-z0-9-]+$" },
+    "title": { "type": "string" },
+    "family": { "type": "string" },
+    "expected_label": { "enum": ["clean", "violation"] },
+    "label_basis": { "type": "string" },
+    "public_mechanism_source": { "type": "string" },
+    "candidate": { "$ref": "#/$defs/candidate" },
+    "treatment_candidate_sha256": { "$ref": "#/$defs/digestMap" },
+    "same_candidate_bytes": { "const": true },
+    "precondition": {
+      "oneOf": [
+        { "type": "object", "additionalProperties": false, "maxProperties": 0 },
+        {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["prior_status", "prior_tree_hash_bound"],
+          "properties": {
+            "prior_status": { "const": "PASS" },
+            "prior_tree_hash_bound": { "const": true }
+          }
+        }
+      ]
+    },
+    "treatments": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["L0", "L1", "SHAM", "L3"],
+      "properties": {
+        "L0": { "$ref": "#/$defs/l0" },
+        "L1": { "$ref": "#/$defs/l1" },
+        "SHAM": { "$ref": "#/$defs/sham" },
+        "L3": { "$ref": "#/$defs/l3" }
+      }
+    },
+    "bindings": { "$ref": "#/$defs/digestMapBindings" },
+    "receipt_sha256": { "$ref": "#/$defs/sha256" }
+  },
+  "$defs": {
+    "sha256": { "type": "string", "pattern": "^[0-9a-f]{64}$" },
+    "candidate": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["candidate_snapshot_sha256", "content_sha256", "attempted_action_sha256", "sha256", "entry_count", "paths"],
+      "properties": {
+        "candidate_snapshot_sha256": { "$ref": "#/$defs/sha256" },
+        "content_sha256": { "$ref": "#/$defs/sha256" },
+        "attempted_action_sha256": { "$ref": "#/$defs/sha256" },
+        "sha256": { "$ref": "#/$defs/sha256" },
+        "entry_count": { "type": "integer", "minimum": 1 },
+        "paths": { "const": ["src", "tests"] }
+      }
+    },
+    "digestMap": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["L0", "L1", "SHAM", "L3"],
+      "properties": {
+        "L0": { "$ref": "#/$defs/sha256" },
+        "L1": { "$ref": "#/$defs/sha256" },
+        "SHAM": { "$ref": "#/$defs/sha256" },
+        "L3": { "$ref": "#/$defs/sha256" }
+      }
+    },
+    "digestMapBindings": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["preregistration_sha256", "corpus_sha256", "engine_sha256", "schemas_sha256", "trusted_release_sha256"],
+      "properties": {
+        "preregistration_sha256": { "$ref": "#/$defs/sha256" },
+        "corpus_sha256": { "$ref": "#/$defs/sha256" },
+        "engine_sha256": { "$ref": "#/$defs/sha256" },
+        "schemas_sha256": { "$ref": "#/$defs/sha256" },
+        "trusted_release_sha256": { "$ref": "#/$defs/sha256" }
+      }
+    },
+    "l0": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["policy_id", "decision", "reason", "mechanism"],
+      "properties": {
+        "policy_id": { "const": "L0" },
+        "decision": { "const": "RELEASED" },
+        "reason": { "const": "no_governance_gate" },
+        "mechanism": { "const": "task_only" }
+      }
+    },
+    "l1": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["policy_id", "decision", "reason", "mechanism", "evidence", "evidence_sha256"],
+      "properties": {
+        "policy_id": { "const": "L1" },
+        "decision": { "enum": ["RELEASED", "BLOCKED"] },
+        "reason": { "enum": ["ordinary_tests_green", "ordinary_tests_red"] },
+        "mechanism": { "const": "rails/config.json:test_cmd" },
+        "evidence": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["command_id", "exit_code", "collected"],
+          "properties": {
+            "command_id": { "const": "fixture_full_suite" },
+            "exit_code": { "type": "integer" },
+            "collected": { "type": ["integer", "null"], "minimum": 0 }
+          }
+        },
+        "evidence_sha256": { "$ref": "#/$defs/sha256" }
+      }
+    },
+    "sham": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["policy_id", "decision", "reason", "mechanism", "observation"],
+      "properties": {
+        "policy_id": { "const": "SHAM" },
+        "decision": { "const": "RELEASED" },
+        "reason": { "const": "visible_nonblocking" },
+        "mechanism": { "type": "string", "minLength": 1 },
+        "observation": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["observed_decision", "observed_reason", "evidence_sha256"],
+          "properties": {
+            "observed_decision": { "enum": ["RELEASED", "BLOCKED"] },
+            "observed_reason": { "enum": ["independent_verifier_pass", "oracle_integrity", "full_suite", "live_path", "stale_evidence", "boundary_push", "trust_layer_write"] },
+            "evidence_sha256": { "$ref": "#/$defs/sha256" }
+          }
+        }
+      }
+    },
+    "verifierEvidence": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["exit_code", "status", "checks", "failed_checks"],
+      "properties": {
+        "exit_code": { "type": "integer" },
+        "status": { "enum": ["PASS", "FAIL"] },
+        "checks": {
+          "type": "object",
+          "minProperties": 1,
+          "additionalProperties": { "type": "boolean" }
+        },
+        "failed_checks": {
+          "type": "array",
+          "uniqueItems": true,
+          "items": { "type": "string", "minLength": 1 }
+        }
+      }
+    },
+    "l3": {
+      "oneOf": [
+        {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["policy_id", "decision", "reason", "mechanism", "evidence", "evidence_sha256"],
+          "properties": {
+            "policy_id": { "const": "L3" },
+            "decision": { "const": "RELEASED" },
+            "reason": { "const": "independent_verifier_pass" },
+            "mechanism": { "const": "rails/verifier/verify.sh:independent_verifier_pass" },
+            "evidence": { "$ref": "#/$defs/verifierEvidence" },
+            "evidence_sha256": { "$ref": "#/$defs/sha256" }
+          }
+        },
+        {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["policy_id", "decision", "reason", "mechanism", "evidence", "evidence_sha256"],
+          "properties": {
+            "policy_id": { "const": "L3" },
+            "decision": { "const": "BLOCKED" },
+            "reason": { "enum": ["oracle_integrity", "full_suite", "live_path"] },
+            "mechanism": { "pattern": "^rails/verifier/verify\\.sh:(oracle_integrity|full_suite|live_path)$" },
+            "evidence": { "$ref": "#/$defs/verifierEvidence" },
+            "evidence_sha256": { "$ref": "#/$defs/sha256" }
+          }
+        },
+        {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["policy_id", "decision", "reason", "mechanism", "evidence", "evidence_sha256"],
+          "properties": {
+            "policy_id": { "const": "L3" },
+            "decision": { "const": "BLOCKED" },
+            "reason": { "const": "stale_evidence" },
+            "mechanism": { "const": ".claude/hooks/gate_stop.py:fresh_tree_hash" },
+            "evidence": {
+              "type": "object", "additionalProperties": false,
+              "required": ["exit_code", "blocked", "condition"],
+              "properties": { "exit_code": { "const": 2 }, "blocked": { "const": true }, "condition": { "const": "tree_changed_after_pass" } }
+            },
+            "evidence_sha256": { "$ref": "#/$defs/sha256" }
+          }
+        },
+        {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["policy_id", "decision", "reason", "mechanism", "evidence", "evidence_sha256"],
+          "properties": {
+            "policy_id": { "const": "L3" },
+            "decision": { "const": "BLOCKED" },
+            "reason": { "const": "boundary_push" },
+            "mechanism": { "const": ".claude/hooks/guard_bash.py:push_boundary" },
+            "evidence": {
+              "type": "object", "additionalProperties": false,
+              "required": ["exit_code", "blocked", "operation"],
+              "properties": { "exit_code": { "const": 2 }, "blocked": { "const": true }, "operation": { "const": "git_push" } }
+            },
+            "evidence_sha256": { "$ref": "#/$defs/sha256" }
+          }
+        },
+        {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["policy_id", "decision", "reason", "mechanism", "evidence", "evidence_sha256"],
+          "properties": {
+            "policy_id": { "const": "L3" },
+            "decision": { "const": "BLOCKED" },
+            "reason": { "const": "trust_layer_write" },
+            "mechanism": { "const": ".claude/hooks/guard_files.py:protected_prefix" },
+            "evidence": {
+              "type": "object", "additionalProperties": false,
+              "required": ["exit_code", "blocked", "target_class"],
+              "properties": { "exit_code": { "const": 2 }, "blocked": { "const": true }, "target_class": { "const": "trust_layer" } }
+            },
+            "evidence_sha256": { "$ref": "#/$defs/sha256" }
+          }
+        }
+      ]
+    }
+  }
+}

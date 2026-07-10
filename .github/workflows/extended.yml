@@ -1,0 +1,32 @@
+name: extended governor proof
+
+on:
+  schedule:
+    - cron: "23 5 * * *"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  adversarial:
+    runs-on: ubuntu-latest
+    timeout-minutes: 35
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.x"
+      - name: Verify the trusted comparison release before extended execution
+        run: |
+          python3 scripts/render_trusted_release.py --check
+          ./bin/agl compare --check
+      - name: Run the complete 50-case governor proof without stamping
+        env:
+          RAILS_NO_STAMP: "1"
+        run: bash rails/adversarial/run_eval.sh
+      - name: Exercise a clean release path end to end
+        run: |
+          SB="$(bash rails/adversarial/fixture.sh)"
+          trap 'rm -rf "$SB"' EXIT
+          ( cd "$SB" && bash rails/verifier/verify.sh D-test )
