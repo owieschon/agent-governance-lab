@@ -3,6 +3,12 @@ __pycache__/
 *.pyc
 .pytest_cache/
 
+# Test-only browser harness
+node_modules/
+playwright-report/
+test-results/
+_site/
+
 # Eval run artifacts — the proof is the stamp in registry.json, not the logs
 rails/evidence/ADVERSARIAL/
 

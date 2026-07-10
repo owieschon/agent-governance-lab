@@ -17,7 +17,11 @@ The argument resolution (locating the verdict, ensuring the handoff dir) stays
 in receipt.sh, which execs this; the body lives here so it reads and tests on
 its own. Lives in the trust layer; not agent-editable.
 """
-import hashlib, json, os, re, sys
+import hashlib
+import json
+import os
+import re
+import sys
 
 root, did, vpath, out = sys.argv[1:5]
 v = json.load(open(vpath))

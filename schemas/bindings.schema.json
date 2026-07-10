@@ -1,0 +1,16 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://owieschon.github.io/agent-governance-lab/schemas/bindings.schema.json",
+  "title": "AGL comparison binding lock",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["schema_version", "locked_at", "preregistration_sha256", "corpus_sha256", "engine_sha256"],
+  "properties": {
+    "schema_version": { "const": "agl.comparison-bindings.v1" },
+    "locked_at": { "type": "string", "format": "date" },
+    "preregistration_sha256": { "$ref": "#/$defs/sha256" },
+    "corpus_sha256": { "$ref": "#/$defs/sha256" },
+    "engine_sha256": { "$ref": "#/$defs/sha256" }
+  },
+  "$defs": { "sha256": { "type": "string", "pattern": "^[0-9a-f]{64}$" } }
+}

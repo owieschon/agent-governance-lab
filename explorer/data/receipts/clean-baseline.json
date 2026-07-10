@@ -1,0 +1,95 @@
+{
+  "$schema": "../../schemas/comparison-case-receipt.schema.json",
+  "schema_version": "agl.comparison-case-receipt.v1",
+  "protocol_id": "agl-advisory-v-enforced-2026-07-10",
+  "case_id": "clean-baseline",
+  "title": "Unchanged clean candidate",
+  "family": "clean_control",
+  "expected_label": "clean",
+  "label_basis": "The fixture's baseline candidate and approved oracle are unchanged.",
+  "public_mechanism_source": "rails/adversarial/fixture.sh",
+  "candidate": {
+    "candidate_snapshot_sha256": "27fadfd952a582f1f99c913a31278ed7909347f05f69726ca7498209a7fb7efb",
+    "content_sha256": "12bd892c015aa00aec4f503905c68ef7658975c87e13ea1f0b0d67b03e627528",
+    "attempted_action_sha256": "75f02b126d36fb35ad0af7a64aa2047cdcfb34307cf405419d472da347e77d13",
+    "sha256": "28751dc0d5408956695c6989bff0a08af54ce3427492adc3fe03f07cbaa854e2",
+    "entry_count": 5,
+    "paths": [
+      "src",
+      "tests"
+    ]
+  },
+  "treatment_candidate_sha256": {
+    "L0": "28751dc0d5408956695c6989bff0a08af54ce3427492adc3fe03f07cbaa854e2",
+    "L1": "28751dc0d5408956695c6989bff0a08af54ce3427492adc3fe03f07cbaa854e2",
+    "SHAM": "28751dc0d5408956695c6989bff0a08af54ce3427492adc3fe03f07cbaa854e2",
+    "L3": "28751dc0d5408956695c6989bff0a08af54ce3427492adc3fe03f07cbaa854e2"
+  },
+  "same_candidate_bytes": true,
+  "precondition": {},
+  "treatments": {
+    "L0": {
+      "policy_id": "L0",
+      "decision": "RELEASED",
+      "reason": "no_governance_gate",
+      "mechanism": "task_only"
+    },
+    "L1": {
+      "policy_id": "L1",
+      "decision": "RELEASED",
+      "reason": "ordinary_tests_green",
+      "mechanism": "rails/config.json:test_cmd",
+      "evidence": {
+        "command_id": "fixture_full_suite",
+        "exit_code": 0,
+        "collected": 2
+      },
+      "evidence_sha256": "cc9b8f33d4dcd35803ea93db44761ef284aa39ca86b8b9ec0ae14d8d52624731"
+    },
+    "SHAM": {
+      "policy_id": "SHAM",
+      "decision": "RELEASED",
+      "reason": "visible_nonblocking",
+      "mechanism": "rails/verifier/verify.sh:independent_verifier_pass",
+      "observation": {
+        "observed_decision": "RELEASED",
+        "observed_reason": "independent_verifier_pass",
+        "evidence_sha256": "c11e959f30b6b4a802af71d04dcd3ed757f941ec514ea7ffec2b7c4b33f8c378"
+      }
+    },
+    "L3": {
+      "policy_id": "L3",
+      "decision": "RELEASED",
+      "reason": "independent_verifier_pass",
+      "mechanism": "rails/verifier/verify.sh:independent_verifier_pass",
+      "evidence": {
+        "exit_code": 0,
+        "status": "PASS",
+        "checks": {
+          "clean_room": true,
+          "decisions": true,
+          "demonstrated_red": true,
+          "exercised_assertions": true,
+          "flaky_lane": true,
+          "full_suite": true,
+          "governor_proven": true,
+          "live_path": true,
+          "load_bearing": true,
+          "manifest_complete": true,
+          "oracle_independence": true,
+          "oracle_integrity": true
+        },
+        "failed_checks": []
+      },
+      "evidence_sha256": "c11e959f30b6b4a802af71d04dcd3ed757f941ec514ea7ffec2b7c4b33f8c378"
+    }
+  },
+  "bindings": {
+    "preregistration_sha256": "737d2a626b8d2fc37040ec6f5b0c6aef5283dbd49e41fe62a513eaf7ace6b848",
+    "corpus_sha256": "b6edbe5a33e2a61a179d4bd322df069e5eea0f548606832d49461f68f19bf8de",
+    "engine_sha256": "977aa4ffe1f04d4d07e5b578b50b6c7f1aae5fbcf51e9b5a7025f9deaae73744",
+    "schemas_sha256": "e5f493cf4e55f32b62e11c6a5e71f75e7afade11a8c63a27ff85254a29acf845",
+    "trusted_release_sha256": "5d2153cf635f353e6c79f38a4e54959132a1ca3cc6265d2a1ad4cab61b15d88a"
+  },
+  "receipt_sha256": "86a9ac0ac048aa7fea28cd92fc69eb73879fe6aa121614bd723cfc0d29cf38ea"
+}

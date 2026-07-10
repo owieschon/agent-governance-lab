@@ -1,0 +1,215 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://owieschon.github.io/agent-governance-lab/schemas/comparison-result.schema.json",
+  "title": "AGL comparison result",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "$schema",
+    "schema_version",
+    "protocol_id",
+    "generated_at",
+    "status",
+    "headline_eligible",
+    "scope",
+    "question",
+    "confirmatory_contrast",
+    "treatments",
+    "bindings",
+    "invalidity_reasons",
+    "denominators",
+    "metrics",
+    "cases",
+    "context",
+    "invalidity_demo",
+    "claim_boundary",
+    "result_sha256"
+  ],
+  "properties": {
+    "$schema": { "const": "../schemas/comparison-result.schema.json" },
+    "schema_version": { "const": "agl.comparison-result.v1" },
+    "protocol_id": { "const": "agl-advisory-v-enforced-2026-07-10" },
+    "generated_at": { "type": "string", "format": "date-time" },
+    "status": { "enum": ["CONFIRMATORY_RESULT", "NO_CONFIRMATORY_RESULT"] },
+    "headline_eligible": { "type": "boolean" },
+    "scope": { "const": "public synthetic mechanism demonstration" },
+    "question": { "type": "string" },
+    "confirmatory_contrast": { "const": ["L1", "L3"] },
+    "treatments": {
+      "type": "array",
+      "minItems": 4,
+      "maxItems": 4,
+      "prefixItems": [
+        { "type": "object", "required": ["id"], "properties": { "id": { "const": "L0" } } },
+        { "type": "object", "required": ["id"], "properties": { "id": { "const": "L1" } } },
+        { "type": "object", "required": ["id"], "properties": { "id": { "const": "SHAM" } } },
+        { "type": "object", "required": ["id"], "properties": { "id": { "const": "L3" } } }
+      ]
+    },
+    "bindings": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["expected", "observed"],
+      "properties": {
+        "expected": { "$ref": "#/$defs/bindings" },
+        "observed": { "$ref": "#/$defs/bindings" }
+      }
+    },
+    "invalidity_reasons": { "type": "array", "items": { "type": "string" } },
+    "denominators": { "oneOf": [{ "$ref": "#/$defs/denominators" }, { "type": "null" }] },
+    "metrics": { "oneOf": [{ "$ref": "#/$defs/metrics" }, { "type": "null" }] },
+    "cases": { "type": "array", "items": { "$ref": "#/$defs/caseSummary" } },
+    "context": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["historical_study", "engineering_decision"],
+      "properties": {
+        "historical_study": { "$ref": "#/$defs/contextRecord" },
+        "engineering_decision": { "$ref": "#/$defs/contextRecord" }
+      }
+    },
+    "invalidity_demo": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["status", "trigger", "headline_metrics"],
+      "properties": {
+        "status": { "const": "NO_CONFIRMATORY_RESULT" },
+        "trigger": { "type": "string", "minLength": 1 },
+        "headline_metrics": { "const": null }
+      }
+    },
+    "claim_boundary": { "type": "string" },
+    "result_sha256": { "$ref": "#/$defs/sha256" }
+  },
+  "allOf": [
+    {
+      "if": { "properties": { "status": { "const": "NO_CONFIRMATORY_RESULT" } } },
+      "then": {
+        "properties": {
+          "headline_eligible": { "const": false },
+          "metrics": { "const": null },
+          "denominators": { "const": null },
+          "cases": { "maxItems": 0 }
+        }
+      }
+    },
+    {
+      "if": { "properties": { "status": { "const": "CONFIRMATORY_RESULT" } } },
+      "then": {
+        "properties": {
+          "headline_eligible": { "const": true },
+          "metrics": { "$ref": "#/$defs/metrics" },
+          "denominators": { "$ref": "#/$defs/denominators" },
+          "cases": { "minItems": 1 }
+        }
+      }
+    }
+  ],
+  "$defs": {
+    "sha256": { "type": "string", "pattern": "^[0-9a-f]{64}$" },
+    "bindings": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["preregistration_sha256", "corpus_sha256", "engine_sha256", "schemas_sha256", "trusted_release_sha256"],
+      "properties": {
+        "preregistration_sha256": { "$ref": "#/$defs/sha256" },
+        "corpus_sha256": { "$ref": "#/$defs/sha256" },
+        "engine_sha256": { "$ref": "#/$defs/sha256" },
+        "schemas_sha256": { "$ref": "#/$defs/sha256" },
+        "trusted_release_sha256": { "$ref": "#/$defs/sha256" }
+      }
+    },
+    "denominator": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["count", "case_ids"],
+      "properties": {
+        "count": { "type": "integer", "minimum": 0 },
+        "case_ids": { "type": "array", "uniqueItems": true, "items": { "type": "string", "pattern": "^[a-z0-9-]+$" } }
+      }
+    },
+    "denominators": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["violation_cases", "clean_controls"],
+      "properties": {
+        "violation_cases": { "$ref": "#/$defs/denominator" },
+        "clean_controls": { "$ref": "#/$defs/denominator" }
+      }
+    },
+    "fraction": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["numerator", "denominator"],
+      "properties": {
+        "numerator": { "type": "integer", "minimum": 0 },
+        "denominator": { "type": "integer", "minimum": 0 }
+      }
+    },
+    "policyMetric": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["containment", "false_blocks"],
+      "properties": {
+        "containment": { "$ref": "#/$defs/fraction" },
+        "false_blocks": { "$ref": "#/$defs/fraction" }
+      }
+    },
+    "metrics": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["headline_policies", "by_policy", "design_context"],
+      "properties": {
+        "headline_policies": { "const": ["L1", "L3"] },
+        "by_policy": {
+          "type": "object", "additionalProperties": false, "required": ["L1", "L3"],
+          "properties": { "L1": { "$ref": "#/$defs/policyMetric" }, "L3": { "$ref": "#/$defs/policyMetric" } }
+        },
+        "design_context": {
+          "type": "object", "additionalProperties": false, "required": ["L0", "SHAM"],
+          "properties": { "L0": { "$ref": "#/$defs/policyMetric" }, "SHAM": { "$ref": "#/$defs/policyMetric" } }
+        }
+      }
+    },
+    "decisionSummary": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["decision", "reason"],
+      "properties": {
+        "decision": { "enum": ["RELEASED", "BLOCKED"] },
+        "reason": { "type": "string", "minLength": 1 }
+      }
+    },
+    "caseSummary": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["id", "title", "family", "expected_label", "candidate_sha256", "same_candidate_bytes", "treatments", "receipt_path", "receipt_sha256"],
+      "properties": {
+        "id": { "type": "string", "pattern": "^[a-z0-9-]+$" },
+        "title": { "type": "string", "minLength": 1 },
+        "family": { "type": "string", "minLength": 1 },
+        "expected_label": { "enum": ["clean", "violation"] },
+        "candidate_sha256": { "$ref": "#/$defs/sha256" },
+        "same_candidate_bytes": { "const": true },
+        "treatments": {
+          "type": "object", "additionalProperties": false, "required": ["L0", "L1", "SHAM", "L3"],
+          "properties": {
+            "L0": { "$ref": "#/$defs/decisionSummary" }, "L1": { "$ref": "#/$defs/decisionSummary" },
+            "SHAM": { "$ref": "#/$defs/decisionSummary" }, "L3": { "$ref": "#/$defs/decisionSummary" }
+          }
+        },
+        "receipt_path": { "type": "string", "pattern": "^data/receipts/[a-z0-9-]+\\.json$" },
+        "receipt_sha256": { "$ref": "#/$defs/sha256" }
+      }
+    },
+    "contextRecord": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["record", "sha256"],
+      "properties": {
+        "record": { "type": "object" },
+        "sha256": { "$ref": "#/$defs/sha256" }
+      }
+    }
+  }
+}

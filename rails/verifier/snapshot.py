@@ -13,7 +13,11 @@ The body lives here rather than a bash heredoc so it reads and tests on its
 own; snapshot.sh is a thin shim that resolves <root>/<id> and execs this.
 Lives in the trust layer; not agent-editable.
 """
-import json, sys, os, hashlib, glob
+import glob
+import hashlib
+import json
+import os
+import sys
 root, did = sys.argv[1], sys.argv[2]
 cfg = {}
 try:

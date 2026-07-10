@@ -15,7 +15,10 @@ runner-specificity is the stated residual (see DECISIONS; jest: use
 `--verbose` and the per-test PASS/SKIP lines). Heuristic on log format. Lives
 in the trust layer; not agent-editable.
 """
-import json, os, re, sys
+import json
+import os
+import re
+import sys
 
 SKIP = re.compile(r"\b(skipped|xfail|xfailed|expected failure)\b", re.I)
 OKP = re.compile(r"(\bok\b|\bPASSED\b|\bPASS\b)")
@@ -51,15 +54,15 @@ def main(argv):
     except Exception:
         print("NA no suite log")
         return 0
-    if not any(OKP.search(l) or "::" in l for l in lines):
+    if not any(OKP.search(line) or "::" in line for line in lines):
         print("NA suite log has no per-test accounting (need pytest -rA / unittest -v)")
         return 0
     problems = []
     for n in names:
-        hit = [l for l in lines if n in l]
-        if any(SKIP.search(l) for l in hit):
+        hit = [line for line in lines if n in line]
+        if any(SKIP.search(line) for line in hit):
             problems.append(f"{n} (skipped/xfailed)")
-        elif not any(OKP.search(l) for l in hit):
+        elif not any(OKP.search(line) for line in hit):
             problems.append(f"{n} (collected but not executed/passed)")
     if problems:
         print("FAIL: load-bearing test not exercised: " + ", ".join(problems))
