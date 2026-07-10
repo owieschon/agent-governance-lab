@@ -1,12 +1,35 @@
-# 3xit2 — a trust layer for your coding agent
+# Agent Governance Lab
 
 [![prove](https://github.com/owieschon/3xit2_demo/actions/workflows/prove.yml/badge.svg)](https://github.com/owieschon/3xit2_demo/actions/workflows/prove.yml)
 
-**Status: working prototype / experiment.** It installs, its own test suite
-runs green, and it does what this README says for the threat model described
-under [Limitations](#limitations-read-this). It is not a security sandbox and
-not a finished product. A self-audit of where it holds and where it does not
-lives in [`AUDIT.md`](AUDIT.md); read it before trusting any guarantee here.
+**Independent release governance for coding-agent work.** The worker may write
+the change; it cannot redefine what counts as proof or release itself. The
+current engine is the hardened 3xit2 implementation under one canonical
+product identity. Existing shell and slash-command entrypoints remain
+compatible while `agl` is the public interface.
+
+## Watch green tests fail to earn release
+
+The demo plants a bad implementation and changes its test to bless the bad
+value. It executes the ordinary suite and proves it is green, then runs the
+real governor against the same candidate bytes:
+
+```bash
+./bin/agl demo --receipt /tmp/oracle-tampering.json
+./bin/agl verify-receipt /tmp/oracle-tampering.json
+```
+
+The first command must show all three facts: ordinary tests pass, the enforced
+policy blocks on `oracle_integrity`, and the restored honest candidate passes.
+The second command independently validates the schema, semantic consistency,
+and SHA-256 content address of the emitted evidence. No model call, secret, or
+configuration is required. The exact fields and trust boundary are documented
+in [`docs/EVIDENCE_CONTRACT.md`](docs/EVIDENCE_CONTRACT.md).
+
+**Current scope:** this is a working governance prototype, not a security
+sandbox. Its exact cooperative-agent threat model and the independently
+reproduced residuals are in [Limitations](#limitations-read-this) and
+[`AUDIT.md`](AUDIT.md).
 
 ## The problem
 
@@ -26,8 +49,10 @@ when it is actively trying to escape (see [Limitations](#limitations-read-this))
 
 ## The idea in one paragraph
 
-Claude Code already is the build loop. The hard part is the trust around it.
-So this kit adds three things to a repo: **boundary guards** (Claude Code hooks
+The coding agent already is the build loop. The hard part is the trust around
+it. The core verifier and receipt contract are provider-independent; the
+current automatic boundary adapter uses Claude Code hooks. The kit adds three
+things to a repo: **boundary guards** (Claude Code hooks
 that block a fixed set of dangerous git and filesystem operations), a
 **verifier** (a script that decides "done" by re-running the full test suite,
 checking the count against a baseline, grep-proving the changed code is on the
@@ -70,6 +95,7 @@ approval points.
 | `.claude/hooks/` | **Boundary guards** | `guard_bash.py`, `guard_files.py` (PreToolUse) and `gate_stop.py` (Stop). The only pieces Claude Code invokes automatically. |
 | `.claude/commands/` | **Commands** | `/dispatch`, `/go`, `/verify`, `/handoff`, `/status` — the operator-facing workflow. |
 | `rails/verifier/` | **Verifier** | `verify.sh` plus single-purpose Python helpers (`treehash.py`, `demonstrated_red.py`, `fingerprint.py`, …). Decides "done". |
+| `rails/agl/` + `bin/agl` | **Evidence contract + CLI** | Provider-independent JSON receipt validation and the canonical product interface. |
 | `rails/adversarial/` | **Adversarial eval** | `run_eval.sh` and one known-bad case per violation class. Proves the verifier and guards actually fire. |
 | `rails/observers/` | **Observers** | Optional scheduled watchers (Sentry, CI, dependency advisories, …) that turn world events into proposals in the same human-gated inbox. |
 | `rails/dispatches/`, `rails/evidence/`, `rails/handoff/` | **State** | Per-task working dirs, verifier output, and review packages. Git-ignored where per-machine. |
@@ -118,7 +144,8 @@ notes it prints.
 ## Try it without installing
 
 ```bash
-bash rails/adversarial/run_eval.sh   # run the eval against the kit itself
+./bin/agl demo                       # one real catch + verifiable receipt
+./bin/agl prove --no-stamp           # all adversarial cases, no local stamp
 ```
 
 This builds disposable sandboxes containing the kit's actual trust-layer files,
@@ -198,18 +225,21 @@ in the adversarial self-audit, [`AUDIT.md`](AUDIT.md).
 
 ```
 install.sh                     installer (copy into a target repo; --update to refresh)
+bin/agl                        canonical CLI (demo, verify, prove, doctor, status)
 CLAUDE.md                      operating rules the agent follows (merged into your repo)
 .claude/
   settings.json                hook registration
   hooks/                       guard_bash.py  guard_files.py  gate_stop.py
   commands/                    /dispatch /go /verify /handoff /status …
 rails/
+  agl/                         provider-independent receipt schema + verifier
   config.json                  per-repo adapter: test_cmd, count_regex, branch, posture
   verifier/                    verify.sh + helpers, baseline.json, load_bearing.txt
   adversarial/                 run_eval.sh + cases/  (one known-bad case per violation class)
   observers/                   event-initiated intake: definitions + runner
   dispatches/  evidence/  handoff/   per-task state (git-ignored where per-machine)
 docs/OPERATING.md              the full daily workflow
+docs/EVIDENCE_CONTRACT.md      portable receipt fields + verification boundary
 isolate/                       OPTIONAL container boundary (trust layer read-only, no network)
 AUDIT.md                       adversarial self-audit: what holds, what doesn't
 ```

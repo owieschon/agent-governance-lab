@@ -50,7 +50,7 @@ def current_tree():
         return "UNKNOWN"
 
 
-print("==================== 3xit2 status ====================\n")
+print("=============== Agent Governance Lab status ===============\n")
 
 # governor
 reg = load(os.path.join(root, "rails", "adversarial", "registry.json"))

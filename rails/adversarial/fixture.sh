@@ -16,6 +16,7 @@ HOST="$(cd "$(dirname "${BASH_SOURCE[0]}")/../.." && pwd)"
 SB="${1:-$(mktemp -d /tmp/rails-eval-XXXXXX)}"
 
 mkdir -p "$SB"/{src,tests} "$SB/.claude/hooks" "$SB/.claude/agents" \
+         "$SB/bin" "$SB/rails/agl" \
          "$SB/rails/verifier" \
          "$SB/rails/dispatches/active/D-test/breaks" "$SB/rails/evidence" \
          "$SB/rails/handoff" "$SB/rails/adversarial" "$SB/rails/incidents"
@@ -23,6 +24,8 @@ mkdir -p "$SB"/{src,tests} "$SB/.claude/hooks" "$SB/.claude/agents" \
 # --- the governor, copied from the host ---------------------------------
 cp "$HOST"/.claude/hooks/*.py "$SB/.claude/hooks/"
 cp "$HOST"/.claude/settings.json "$SB/.claude/settings.json"
+cp "$HOST"/bin/agl "$SB/bin/agl"
+cp "$HOST"/rails/agl/*.py "$HOST"/rails/agl/*.json "$SB/rails/agl/"
 cp "$HOST"/rails/verifier/verify.sh "$HOST"/rails/verifier/remote_ref.sh \
    "$HOST"/rails/verifier/treehash.py "$HOST"/rails/verifier/fingerprint.py \
    "$HOST"/rails/verifier/demonstrated_red.py "$HOST"/rails/verifier/incident.py \
@@ -63,7 +66,7 @@ if [ -f "$HOST/rails/notify/notify.sh" ]; then
   cp "$HOST/rails/notify/notify.sh" "$SB/rails/notify/notify.sh"
   chmod +x "$SB/rails/notify/notify.sh"
 fi
-chmod +x "$SB"/rails/verifier/*.sh "$SB"/rails/verifier/*.py "$SB"/.claude/hooks/*.py
+chmod +x "$SB"/bin/agl "$SB"/rails/verifier/*.sh "$SB"/rails/verifier/*.py "$SB"/.claude/hooks/*.py
 
 # pre-push hook: structural push gate (part of the governor under test)
 mkdir -p "$SB/.git/hooks"

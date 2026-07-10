@@ -12,6 +12,10 @@ T="$(mktemp -d)/repo"; mkdir -p "$T"
 
 bash "$H/install.sh" "$T" >/dev/null 2>&1
 _assert "install placed the hooks" 1 "$([ -f "$T/.claude/hooks/guard_bash.py" ] && echo 1 || echo 0)"
+_assert "install placed the canonical CLI" 1 "$([ -f "$T/bin/agl" ] && echo 1 || echo 0)"
+_assert "install placed the receipt contract" 1 "$([ -f "$T/rails/agl/receipt.py" ] && echo 1 || echo 0)"
+_assert "install placed the candidate snapshot schema" 1 "$([ -f "$T/rails/agl/candidate_snapshot.schema.json" ] && echo 1 || echo 0)"
+_assert "install placed the evidence contract" 1 "$([ -f "$T/docs/EVIDENCE_CONTRACT.md" ] && echo 1 || echo 0)"
 
 # stamp a proof (stand-in for run_eval) so a registry exists to preserve
 FP1="$(python3 "$H/rails/verifier/fingerprint.py" "$T")"
@@ -21,6 +25,9 @@ python3 -c "import json,sys; json.dump({'last_proven_fingerprint':sys.argv[1]}, 
 # eject (preserve history)
 bash "$T/rails/verifier/eject.sh" --yes >/dev/null 2>&1
 _assert "ejected: hooks gone"                 0 "$([ -e "$T/.claude/hooks/guard_bash.py" ] && echo 1 || echo 0)"
+_assert "ejected: canonical CLI gone"         0 "$([ -e "$T/bin/agl" ] && echo 1 || echo 0)"
+_assert "ejected: receipt contract gone"      0 "$([ -e "$T/rails/agl" ] && echo 1 || echo 0)"
+_assert "ejected: evidence contract gone"     0 "$([ -e "$T/docs/EVIDENCE_CONTRACT.md" ] && echo 1 || echo 0)"
 nwired() { if [ -f "$1" ]; then grep -c 'gate_stop.py' "$1" 2>/dev/null; else echo 0; fi; }
 _assert "ejected: settings un-wired (file removed or emptied)" 0 "$(nwired "$T/.claude/settings.json")"
 _assert "preserved: registry stamp (inert)"   1 "$([ -f "$T/rails/adversarial/registry.json" ] && echo 1 || echo 0)"
@@ -30,6 +37,8 @@ bash "$H/install.sh" "$T" >/dev/null 2>&1
 FP2="$(python3 "$H/rails/verifier/fingerprint.py" "$T")"
 STAMP="$(python3 -c "import json;print(json.load(open('$T/rails/adversarial/registry.json'))['last_proven_fingerprint'])")"
 _assert "round-trip: hooks restored"                          1 "$([ -f "$T/.claude/hooks/guard_bash.py" ] && echo 1 || echo 0)"
+_assert "round-trip: canonical CLI restored"                  1 "$([ -f "$T/bin/agl" ] && echo 1 || echo 0)"
+_assert "round-trip: evidence contract restored"              1 "$([ -f "$T/docs/EVIDENCE_CONTRACT.md" ] && echo 1 || echo 0)"
 _assert "round-trip: same kit -> fingerprint unchanged"   "$FP1" "$FP2"
 _assert "round-trip: preserved stamp still valid (trust legitimately survives)" "$STAMP" "$FP2"
 

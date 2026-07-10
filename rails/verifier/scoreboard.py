@@ -135,7 +135,7 @@ def main():
     archived = [d for d in glob.glob(os.path.join(ROOT, "rails", "dispatches", "archive", "*"))
                 if os.path.isdir(d)]
 
-    print("==================== 3xit2 scoreboard ====================\n")
+    print("============ Agent Governance Lab scoreboard ============\n")
     print(f"  dispatches completed (PASS verdict):  {n_done}")
     print(f"  dispatches archived:                  {len(archived)}")
     # Cold-start (L10): a rate over a thin sample is not meaningful -- 100%

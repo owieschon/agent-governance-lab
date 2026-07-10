@@ -25,4 +25,23 @@ printf 'original\n' > "$note"            # restore exact content
 _assert "untracked content restored -> stop allowed"              0 "$(agent_stop)"
 
 rm -f "$note"
+
+# An untracked symlink is hashed by its LINK TEXT, never by opening its target.
+# Changing bytes outside the repo must not perturb a fresh verdict; retargeting
+# the link itself must.
+outside="$(mktemp -d)"
+printf 'external-v1\n' > "$outside/one.txt"
+printf 'external-v2\n' > "$outside/two.txt"
+ln -s "$outside/one.txt" untracked-link
+
+_assert "verify PASSes with an external-pointing untracked symlink" 0 "$(run_verify)"
+printf 'external bytes changed after PASS\n' > "$outside/one.txt"
+_assert "external target CONTENT is not followed -> stop allowed" 0 "$(agent_stop)"
+
+rm -f untracked-link
+ln -s "$outside/two.txt" untracked-link
+_assert "untracked symlink TARGET changed -> stop BLOCKED" 2 "$(agent_stop)"
+
+rm -f untracked-link
+rm -rf "$outside"
 finish
