@@ -1,0 +1,44 @@
+name: prove
+
+# Eval-as-CI: every push and PR re-runs the adversarial eval that proves the
+# governor's checks actually fire on their violations. The build fails if any
+# case fails. CI PROVES; it does NOT stamp registry.json -- stamping the
+# governor as proven stays a local, human-released act (RAILS_NO_STAMP=1).
+#
+# Note the deliberate cross-shell coverage: CI runs on Ubuntu's bash 5 while
+# the kit is developed against macOS bash 3.2, so the eval must pass on both.
+
+on:
+  push:
+  pull_request:
+
+jobs:
+  prove:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.x"
+      - name: L6 next-step lint (every block/flag/error message carries its next step)
+        run: python3 rails/verifier/nextstep_lint.py .
+      - name: Prove the governor (adversarial eval, no stamp)
+        env:
+          RAILS_NO_STAMP: "1"
+        run: bash rails/adversarial/run_eval.sh
+        # The eval proves clean_room itself (case 17). A REPO consuming this kit
+        # turns clean_room ON in its own pre-merge / CI verify step by setting
+        # RAILS_CLEAN_ROOM=1 when it runs `verify.sh <id>` -- it doubles suite
+        # time (fresh git worktree, no working-tree artifacts), so it is the
+        # pre-merge posture, not the inner-loop one.
+      - name: Exercise verify.sh end-to-end on a real dispatch
+        # The eval drives verify.sh through its violation cases; this also runs
+        # it on a complete, clean dispatch and asserts a real PASS -- so the
+        # green path of the verifier itself is CI-covered, not only the checks.
+        run: |
+          SB="$(bash rails/adversarial/fixture.sh)"
+          ( cd "$SB" && bash rails/verifier/verify.sh D-test )
+          rc=$?
+          rm -rf "$SB"
+          if [ "$rc" -ne 0 ]; then echo "verify.sh did not PASS a clean dispatch (exit $rc)"; exit 1; fi
+          echo "verify.sh PASSed a clean real dispatch"

@@ -1,0 +1,12 @@
+{
+  "name": "langsmith",
+  "source": "LangSmith (LangChain runs)",
+  "trigger": "failed runs (status=error) on monitored projects since last state",
+  "env_var": "LANGSMITH_API_KEY",
+  "env_doc": "LANGSMITH_API_KEY carries auth (NAME only here; value env-only, never written to any file).",
+  "requires_cmd": "curl",
+  "query_cmd": "curl -sf -X POST -H \"x-api-key: $LANGSMITH_API_KEY\" -H \"Content-Type: application/json\" -d \"{\\\"filter\\\": \\\"eq(status, 'error')\\\", \\\"limit\\\": 50}\" https://api.smith.langchain.com/api/v1/runs/query | python3 rails/observers/extract.py langsmith",
+  "fixture": "rails/observers/fixtures/langsmith.jsonl",
+  "dedup_field": "id",
+  "rate_limit": 3
+}

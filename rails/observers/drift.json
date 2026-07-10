@@ -1,0 +1,12 @@
+{
+  "name": "drift",
+  "source": "kit self-check (the kit watching its own decay)",
+  "trigger": "weekly per-installed-repo self-check, files ONLY on a failing or stale condition: doctor.sh FAIL, baseline older than 30 days, governor stamp older than 30 days (RAILS_DRIFT_STALE_DAYS), or unlinked incidents. Dedup per condition per ISO week.",
+  "env_var": "",
+  "env_doc": "No credential: drift reads only the local repo.",
+  "requires_cmd": "",
+  "query_cmd": "python3 rails/observers/extract.py drift",
+  "fixture": "",
+  "dedup_field": "id",
+  "rate_limit": 3
+}

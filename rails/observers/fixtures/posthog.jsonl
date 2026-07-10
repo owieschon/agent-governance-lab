@@ -1,0 +1,1 @@
+{"id": "FIXTURE-ph-deadbeef-2026-06-12", "title": "PostHog error events: TypeError (FIXTURE)", "evidence": "PostHog $exception events, last day (type TypeError)", "problem": "PostHog: 9 new error events of type TypeError in the last day (FIXTURE -- dry-run sample, not live data)", "priority": "P2"}

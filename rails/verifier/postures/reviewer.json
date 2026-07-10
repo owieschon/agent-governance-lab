@@ -1,0 +1,19 @@
+{
+  "role": "reviewer",
+  "description": "Read-only reviewer posture. Find-don't-fix is guard-enforced: any write outside the findings destination fires the guard. The reviewer sees the whole work tree but cannot change it.",
+  "readable": ["*"],
+  "writable": ["rails/evidence/*/review_findings.md"],
+  "blocked_verbs": ["eject"],
+  "blocked_paths_write": [
+    "rails/verifier",
+    ".claude/hooks",
+    ".claude/settings.json",
+    ".claude/settings.local.json",
+    "rails/evidence/stats.jsonl",
+    "rails/adversarial",
+    "rails/config.json",
+    "rails/incidents",
+    "GOVERNOR_LOG.md"
+  ],
+  "notes": "The reviewer's only writable surface is the findings artifact inside the dispatch's evidence directory. Exhaust, registry, settings, and the governor surface are all blocked. Network beyond the model API is a binding-level concern (CC restricts subagent network by default)."
+}

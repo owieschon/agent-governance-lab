@@ -1,0 +1,8 @@
+{
+  "role": "worker",
+  "description": "Default worker posture — current behavior made explicit. This is the posture every agent runs under when no CLAUDE_AGENT_NAME is set or when the name has no matching posture file. All existing guard rules apply unchanged; this file documents the implicit contract, it does not change it.",
+  "readable": ["*"],
+  "writable": ["*"],
+  "blocked_verbs": [],
+  "notes": "Worker writes are governed by guard_files.py (trust-layer protection) and guard_bash.py (boundary enforcement) as before. This posture file is fingerprint-neutral: adding it does not change any guard behavior for the worker."
+}

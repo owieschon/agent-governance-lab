@@ -1,0 +1,12 @@
+{
+  "name": "posthog",
+  "source": "PostHog (product analytics)",
+  "trigger": "new error events ($exception) in the last day, grouped per exception type -- product signal in, dispatch proposal out",
+  "env_var": "POSTHOG_API_KEY",
+  "env_doc": "POSTHOG_API_KEY carries auth (NAME only here; value env-only, never written to any file). The query path also reads POSTHOG_HOST (defaults to https://app.posthog.com) and POSTHOG_PROJECT_ID.",
+  "requires_cmd": "curl",
+  "query_cmd": "curl -sf -H \"Authorization: Bearer $POSTHOG_API_KEY\" \"${POSTHOG_HOST:-https://app.posthog.com}/api/projects/$POSTHOG_PROJECT_ID/events/?event=%24exception&limit=100\" | python3 rails/observers/extract.py posthog",
+  "fixture": "rails/observers/fixtures/posthog.jsonl",
+  "dedup_field": "id",
+  "rate_limit": 3
+}

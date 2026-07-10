@@ -1,0 +1,12 @@
+{
+  "name": "deps",
+  "source": "dependency security advisories (pip-audit / npm audit vs lockfiles)",
+  "trigger": "weekly advisory scan: npm audit at high+ severity; pip-audit every advisory (pip-audit emits no severity field). NEVER auto-updates anything -- each advisory becomes a proposal, the bump goes through a dispatch.",
+  "env_var": "",
+  "env_doc": "No credential: both tools read public advisory databases. Each tool is present-or-skip inside query_cmd, so a repo with neither lockfile files nothing.",
+  "requires_cmd": "",
+  "query_cmd": "{ if command -v pip-audit >/dev/null 2>&1 && [ -f requirements.txt ]; then pip-audit -r requirements.txt -f json 2>/dev/null | python3 rails/observers/extract.py pip; fi; if command -v npm >/dev/null 2>&1 && [ -f package-lock.json ]; then npm audit --json 2>/dev/null | python3 rails/observers/extract.py npm; fi; true; }",
+  "fixture": "",
+  "dedup_field": "id",
+  "rate_limit": 3
+}

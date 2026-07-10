@@ -1,0 +1,12 @@
+{
+  "name": "ci",
+  "source": "GitHub Actions (via gh CLI)",
+  "trigger": "a failed workflow run on main -- the cheapest, highest-value observer; dedup per run id so each failure files once. Edit --branch in query_cmd if this repo's main branch is named differently.",
+  "env_var": "",
+  "env_doc": "No env var: gh manages its own auth (gh auth login, or GH_TOKEN in gh's standard environment). If gh is absent the run is a logged skip.",
+  "requires_cmd": "gh",
+  "query_cmd": "gh run list --branch main --status failure --limit 10 --json databaseId,displayTitle,url,createdAt | python3 rails/observers/extract.py ci",
+  "fixture": "",
+  "dedup_field": "id",
+  "rate_limit": 3
+}

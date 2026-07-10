@@ -1,0 +1,12 @@
+{
+  "name": "phoenix",
+  "source": "Arize Phoenix (LLM traces)",
+  "trigger": "eval-metric degradation over the lookback window: rising hallucination/fabrication flags (the voice-agent containment watchdog), latency p95 breach (PHOENIX_P95_MS, default 5000), or token-spend spike (PHOENIX_TOKENS_MAX, off by default) -- thresholds in extract.py",
+  "env_var": "PHOENIX_API_KEY",
+  "env_doc": "PHOENIX_API_KEY carries auth (NAME only here; value env-only, never written to any file). The query path also reads PHOENIX_HOST and PHOENIX_PROJECT.",
+  "requires_cmd": "curl",
+  "query_cmd": "curl -sf -H \"api_key: $PHOENIX_API_KEY\" \"$PHOENIX_HOST/v1/projects/$PHOENIX_PROJECT/spans?limit=200\" | python3 rails/observers/extract.py phoenix",
+  "fixture": "rails/observers/fixtures/phoenix.jsonl",
+  "dedup_field": "id",
+  "rate_limit": 3
+}

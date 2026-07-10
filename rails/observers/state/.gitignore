@@ -1,0 +1,4 @@
+# observer state (dedup memory, run logs, overflow) is per-machine: git-ignored
+*
+!.gitignore
+!.gitkeep

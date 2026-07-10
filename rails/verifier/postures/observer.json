@@ -1,0 +1,21 @@
+{
+  "role": "observer",
+  "description": "Outer-loop observer posture. An observer's ONLY write privilege is creating NEW files in rails/dispatches/inbox/ and its own state under rails/observers/state/. It never implements, never edits code, never touches the governor surface, evidence, incidents, dispatches, or existing inbox items. Find-don't-fix pointed at the world instead of the repo; guard-enforced, not prompted.",
+  "readable": ["*"],
+  "writable": ["rails/dispatches/inbox/*", "rails/observers/state/*"],
+  "blocked_verbs": ["eject"],
+  "blocked_paths_write": [
+    "rails/verifier",
+    ".claude/hooks",
+    ".claude/settings.json",
+    ".claude/settings.local.json",
+    "rails/evidence",
+    "rails/adversarial",
+    "rails/config.json",
+    "rails/incidents",
+    "rails/observers",
+    "rails/dispatches/active",
+    "GOVERNOR_LOG.md"
+  ],
+  "notes": "Writable means CREATE for the inbox: guard_files.py blocks any write to an EXISTING inbox item even though the path matches the writable pattern (create-only is enforced after the posture grant). Shell writes are default-denied for any restricted posture; the observer files items with the Write tool, whose path the guard resolves and checks. Observers propose, the human approves, the inner loop implements -- the dispatch gate does not move."
+}

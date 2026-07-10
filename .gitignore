@@ -1,0 +1,24 @@
+# Python
+__pycache__/
+*.pyc
+.pytest_cache/
+
+# Eval run artifacts — the proof is the stamp in registry.json, not the logs
+rails/evidence/ADVERSARIAL/
+
+# Per-dispatch verifier output (structure is kept via .gitkeep)
+rails/evidence/*/
+rails/evidence/*.jsonl
+
+# Per-machine observer + notify state
+rails/observers/state/*
+!rails/observers/state/.gitignore
+!rails/observers/state/.gitkeep
+rails/notify/state/
+
+# Dispatch lifecycle working dirs (structure kept via .gitkeep)
+rails/dispatches/active/*/
+rails/dispatches/archive/*/
+
+# Transient governor-release marker (local, never committed standalone)
+PENDING_RELEASE

@@ -1,0 +1,41 @@
+{
+  "scope": "ONE line: what this repo is for. /dispatch checks each new problem against this and flags a mismatch for confirmation (wrong-repo tripwire).",
+  "posture": "standard",
+  "_posture_doc": "quiet|standard|strict -- CEREMONY LOUDNESS ONLY (read at the gating layer; verification strength is identical in all three). DEFAULT is standard: the Stop gate blocks a session that lacks a fresh PASS, so the guarantee holds out of the box. quiet downgrades the gate to report-only (no dispatch lifecycle required) -- an explicit opt-down, not the default, because a gate that only reports is advisory. strict: standard + the trust-layer/fingerprint discipline (trust layer agent-read-only; a changed governor certifies nothing until run_eval.sh re-proves and re-stamps).",
+  "main_branch": "main",
+  "remote": "origin",
+  "allow_local_commits": false,
+  "test_cmd": "pytest -q",
+  "count_regex": "([0-9]+) passed",
+  "collect_cmd": "pytest --collect-only -q",
+  "test_glob": "tests",
+  "fixtures_glob": "",
+  "_js_example": {
+    "test_cmd": "npx jest --ci 2>&1",
+    "count_regex": "Tests:.*?([0-9]+) passed",
+    "collect_cmd": "npx jest --listTests"
+  },
+  "migration_patterns": [
+    "prisma migrate",
+    "alembic upgrade",
+    "alembic downgrade",
+    "supabase db push",
+    "supabase db reset",
+    "drizzle-kit push",
+    "drizzle-kit migrate",
+    "rails db:migrate",
+    "manage.py migrate",
+    "flyway migrate",
+    "atlas migrate apply"
+  ],
+  "flaky_glob": "",
+  "flaky_cmd": "",
+  "flaky_runs": 3,
+  "_flaky_doc": "quarantine lane (Job 9b): flaky_glob = a dir the GATED test_cmd does NOT collect; move a flaky test there + declare it in rails/verifier/flaky_lane.json. flaky_cmd runs the lane NON-GATING. flaky_runs = re-runs for flaky_triage.sh. Empty flaky_glob = off (zero footprint).",
+  "notify": {
+    "enabled": false,
+    "channel": "telegram",
+    "events": ["handoff_pass", "dispatch_blocked", "incident_recorded", "observer_filed", "stamp_invalidated"]
+  },
+  "_notify_doc": "Push surfacing (Job 4C): rails/notify/notify.sh, default OFF -- token-less installs untouched. Token via TELEGRAM_RAILS_BOT_TOKEN + TELEGRAM_RAILS_CHAT_ID env vars ONLY (use a DEDICATED bot; never reuse another bot's token); never written to any file. One line per event: repo, event, artifact path -- no payloads, diffs, or secrets. Wired callers today: run_observer.sh (observer_filed, batched per run) and doctor.sh (stamp_invalidated); the other listed events are reserved hook points, not yet wired -- verify.sh (the gate) stays clean of notify by design."
+}

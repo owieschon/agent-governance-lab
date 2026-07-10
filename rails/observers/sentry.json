@@ -1,0 +1,12 @@
+{
+  "name": "sentry",
+  "source": "Sentry (error monitoring)",
+  "trigger": "new issue with >5 users affected, or any regression on a resolved issue, since last state (24h stats window)",
+  "env_var": "SENTRY_API_TOKEN",
+  "env_doc": "SENTRY_API_TOKEN carries auth (NAME only here; the value lives in the runner's environment and is never written to any file). The query path also reads SENTRY_ORG and SENTRY_PROJECT.",
+  "requires_cmd": "curl",
+  "query_cmd": "curl -sf -H \"Authorization: Bearer $SENTRY_API_TOKEN\" \"https://sentry.io/api/0/projects/$SENTRY_ORG/$SENTRY_PROJECT/issues/?query=is:unresolved&statsPeriod=24h\" | python3 rails/observers/extract.py sentry",
+  "fixture": "rails/observers/fixtures/sentry.jsonl",
+  "dedup_field": "id",
+  "rate_limit": 3
+}
