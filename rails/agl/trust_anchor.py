@@ -5,5 +5,5 @@ release update must change them as a code-reviewed trust decision; generated
 artifacts and mutable binding files cannot rewrite them themselves.
 """
 
-TRUSTED_RELEASE_MANIFEST_SHA256 = "5d2153cf635f353e6c79f38a4e54959132a1ca3cc6265d2a1ad4cab61b15d88a"
-TRUSTED_RESULT_SHA256 = "e7f6d2a25acf00e4c7707c9fbcbbbf9d9de692f3e79be9157586b2982bf64372"
+TRUSTED_RELEASE_MANIFEST_SHA256 = "756c693f9b518f944338006a4b67d6364f454a59d310d47cab88e240a331b605"
+TRUSTED_RESULT_SHA256 = "0bca929d3d2560ca9bdeb9e60840b08248d33434514d441899c4cc1032130cd8"

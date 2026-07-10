@@ -1,6 +1,6 @@
 # Agent Governance Lab
 
-[![smoke](https://github.com/owieschon/3xit2_demo/actions/workflows/prove.yml/badge.svg)](https://github.com/owieschon/3xit2_demo/actions/workflows/prove.yml)
+[![smoke](https://github.com/owieschon/agent-governance-lab/actions/workflows/prove.yml/badge.svg)](https://github.com/owieschon/agent-governance-lab/actions/workflows/prove.yml)
 
 **Independent release governance for coding-agent work, with public receipts.**
 
