@@ -34,9 +34,9 @@ receipts, validates their treatment semantics, and recomputes every denominator,
 metric, and displayed case outcome. Opening a row shows the already-verified
 receipt.
 
-**Live explorer:** deployment pending. The Pages workflow is configured, but no
-public URL is claimed until this branch is merged to `main` and the repository
-owner selects **Settings → Pages → Source: GitHub Actions**.
+**[Open the live evidence explorer](https://owieschon.github.io/agent-governance-lab/).**
+It runs the same build-embedded trust anchors and semantic receipt replay as the
+local reviewer path; no login or server-side state is required.
 
 ## The mechanism
 
@@ -163,11 +163,10 @@ part of the synthetic comparison, any denominator, or a model-efficacy claim.
    code-anchored manifest for every mutable comparison source and schema.
 3. [`rails/agl/comparison.py`](rails/agl/comparison.py) — deterministic executor,
    semantic receipt/result verification, and fail-closed analysis.
-4. [`explorer/data/experiment.json`](explorer/data/experiment.json) — generated,
-   content-addressed result and separate context cases.
-5. [`explorer/index.html`](explorer/index.html) — static, framework-free reviewer
-   surface; `trusted-release.js` anchors the build and `verification.js`
-   recomputes the receipt-backed analysis in the browser.
+4. [`explorer/index.html`](explorer/index.html) — static, framework-free reviewer
+   surface over the generated, content-addressed result;
+   `trusted-release.js` anchors the build and `verification.js` recomputes the
+   receipt-backed analysis in the browser.
 
 JSON Schemas live in [`schemas/`](schemas/). The original provider-independent
 release receipt remains documented in
@@ -227,3 +226,5 @@ checks on pushes and pull requests. `.github/workflows/extended.yml` rechecks
 the trusted comparison release before the complete 50-case nightly or manual
 proof. `.github/workflows/pages.yml` refuses source or artifact drift before
 assembling and deploying the static artifact.
+
+Apache-2.0 licensed. See [`LICENSE`](LICENSE).
