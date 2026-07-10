@@ -18,7 +18,7 @@
     },
     {
       "path": "experiment/bindings.json",
-      "sha256": "dcffbdc9e10755f86c9f4813f690fab65e074a5020adb28c2b6561ac536194df"
+      "sha256": "25ec767cfbc07ac69eb84a43306305e3deb3a7eec1d48b7c94060bc530eeef95"
     },
     {
       "path": "experiment/corpus.json",
@@ -42,7 +42,7 @@
     },
     {
       "path": "explorer/index.html",
-      "sha256": "4436dd7fde01246cde19615179481eb22f8c5b23172a131473c8fb426adde986"
+      "sha256": "737fa4dc690208967fe6519513b3aa1e0db8b4a343f3f22a4a6cd3a26097152a"
     },
     {
       "path": "explorer/styles.css",
