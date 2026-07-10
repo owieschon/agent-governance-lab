@@ -22,6 +22,8 @@ jobs:
           python-version: "3.x"
       - name: L6 next-step lint (every block/flag/error message carries its next step)
         run: python3 rails/verifier/nextstep_lint.py .
+      - name: Test the canonical CLI and receipt integrity contract
+        run: python3 -m unittest discover -s tests -v
       - name: Prove the governor (adversarial eval, no stamp)
         env:
           RAILS_NO_STAMP: "1"

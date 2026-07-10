@@ -1,5 +1,5 @@
 ---
-description: Show a real 3xit2 catch in a throwaway sandbox -- zero config, nothing touches your repo
+description: Show a real Agent Governance Lab catch and emit a verifiable receipt -- zero config, nothing touches your repo
 ---
 
 Run `bash rails/verifier/demo.sh` and present its output verbatim.

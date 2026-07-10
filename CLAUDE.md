@@ -1,5 +1,5 @@
 <!-- 3XIT2 BEGIN (do not edit inside this block by agent) -->
-# Operating rules: 3xit2
+# Operating rules: Agent Governance Lab
 
 This repo runs dispatch-driven agent development. The loop proposes and
 iterates; the verifier judges; the human releases.

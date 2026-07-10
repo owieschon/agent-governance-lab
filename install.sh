@@ -32,6 +32,7 @@ SRC="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 
 mkdir -p "$TARGET/.claude/hooks" "$TARGET/.claude/commands" \
          "$TARGET/.claude/agents" \
+         "$TARGET/bin" "$TARGET/rails/agl" \
          "$TARGET/rails/verifier" "$TARGET/rails/verifier/postures" \
          "$TARGET/rails/dispatches/inbox" "$TARGET/rails/dispatches/active" \
          "$TARGET/rails/dispatches/archive" "$TARGET/rails/evidence" \
@@ -52,7 +53,13 @@ place() {  # trust-layer file: overwrite on --update, keep-if-absent on install
   fi
 }
 
-echo "${MODE}ing 3xit2 into $TARGET"
+echo "${MODE}ing Agent Governance Lab into $TARGET"
+
+# canonical CLI + provider-independent evidence contract
+place "$SRC/bin/agl" "$TARGET/bin/agl"
+for f in "$SRC"/rails/agl/*.py "$SRC"/rails/agl/*.json; do
+  place "$f" "$TARGET/rails/agl/$(basename "$f")"
+done
 
 # hooks + commands (trust layer)
 for f in guard_bash.py guard_files.py gate_stop.py; do
@@ -144,6 +151,7 @@ for d in dispatches/inbox dispatches/active dispatches/archive evidence handoff 
   touch "$TARGET/rails/$d/.gitkeep"
 done
 place "$SRC/docs/OPERATING.md" "$TARGET/docs/OPERATING.md"
+place "$SRC/docs/EVIDENCE_CONTRACT.md" "$TARGET/docs/EVIDENCE_CONTRACT.md"
 copy_if_absent "$SRC/GOVERNOR_LOG.md" "$TARGET/GOVERNOR_LOG.md"  # append-only, per-repo
 
 # adversarial eval: harness + CORE + KITDEV cases overwrite on update;
@@ -205,7 +213,7 @@ else
   echo "  add    CLAUDE.md"
 fi
 
-chmod +x "$TARGET/rails/verifier/"*.sh "$TARGET/rails/verifier/treehash.py" "$TARGET/.claude/hooks/"*.py
+chmod +x "$TARGET/bin/agl" "$TARGET/rails/verifier/"*.sh "$TARGET/rails/verifier/treehash.py" "$TARGET/.claude/hooks/"*.py
 
 # ---- pre-push hook: structural push gate (fires at git layer) ----
 # If a .git directory exists and no pre-push hook is present, install ours.

@@ -1,11 +1,11 @@
 ---
 name: rails
-description: Orient in an 3xit2 repo -- report the current trust-layer state and the single next action. Use when the user asks "where am I", "what's the rails state", "what should I do next" in a repo that has 3xit2 installed, or types /rails.
+description: Orient in an Agent Governance Lab repo -- report the current trust-layer state and the single next action. Use when the user asks "where am I", "what's the rails state", "what should I do next" in a repo with the governance layer installed, or types /rails.
 ---
 
 # /rails — where am I, what next
 
-You are orienting someone in a repo that runs the 3xit2 trust layer. Your
+You are orienting someone in a repo that runs Agent Governance Lab. Your
 job is to answer two questions and nothing more: **what state is this repo in,
 and what is the single next action.** Route to the existing commands; never
 reimplement their logic, never dump the whole system.
