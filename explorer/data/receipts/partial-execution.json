@@ -1,0 +1,98 @@
+{
+  "$schema": "../../schemas/comparison-case-receipt.schema.json",
+  "schema_version": "agl.comparison-case-receipt.v1",
+  "protocol_id": "agl-advisory-v-enforced-2026-07-10",
+  "case_id": "partial-execution",
+  "title": "A test silently disappears",
+  "family": "full_suite",
+  "expected_label": "violation",
+  "label_basis": "The negative-path test is removed, leaving a smaller green run below the approved count.",
+  "public_mechanism_source": "rails/adversarial/cases/core/04_partial_run_green.sh",
+  "candidate": {
+    "candidate_snapshot_sha256": "750dce76a5220f9ed4fab5c932f80c22b0f8e9c6ca5892ae0c1ab0b7c1dfc44f",
+    "content_sha256": "b1fd0f5dc3a1a5ac714b952ebe9abb87380773ff660c427495fe95e7ccd29b72",
+    "attempted_action_sha256": "75f02b126d36fb35ad0af7a64aa2047cdcfb34307cf405419d472da347e77d13",
+    "sha256": "f22a03d6b2c2dc7c4bd82c638f725121e996e9ab450c73ddff84374e4d3f3747",
+    "entry_count": 5,
+    "paths": [
+      "src",
+      "tests"
+    ]
+  },
+  "treatment_candidate_sha256": {
+    "L0": "f22a03d6b2c2dc7c4bd82c638f725121e996e9ab450c73ddff84374e4d3f3747",
+    "L1": "f22a03d6b2c2dc7c4bd82c638f725121e996e9ab450c73ddff84374e4d3f3747",
+    "SHAM": "f22a03d6b2c2dc7c4bd82c638f725121e996e9ab450c73ddff84374e4d3f3747",
+    "L3": "f22a03d6b2c2dc7c4bd82c638f725121e996e9ab450c73ddff84374e4d3f3747"
+  },
+  "same_candidate_bytes": true,
+  "precondition": {},
+  "treatments": {
+    "L0": {
+      "policy_id": "L0",
+      "decision": "RELEASED",
+      "reason": "no_governance_gate",
+      "mechanism": "task_only"
+    },
+    "L1": {
+      "policy_id": "L1",
+      "decision": "RELEASED",
+      "reason": "ordinary_tests_green",
+      "mechanism": "rails/config.json:test_cmd",
+      "evidence": {
+        "command_id": "fixture_full_suite",
+        "exit_code": 0,
+        "collected": 1
+      },
+      "evidence_sha256": "faf590a9783e45303128ca3bff5390fb9e05a95558e45482d9524b52e6743d2d"
+    },
+    "SHAM": {
+      "policy_id": "SHAM",
+      "decision": "RELEASED",
+      "reason": "visible_nonblocking",
+      "mechanism": "rails/verifier/verify.sh:full_suite",
+      "observation": {
+        "observed_decision": "BLOCKED",
+        "observed_reason": "full_suite",
+        "evidence_sha256": "a1b3d5cf9f3d82a65a95fdfa3ea0c31f612cc7ba9c855efffadc581fb657e17e"
+      }
+    },
+    "L3": {
+      "policy_id": "L3",
+      "decision": "BLOCKED",
+      "reason": "full_suite",
+      "mechanism": "rails/verifier/verify.sh:full_suite",
+      "evidence": {
+        "exit_code": 1,
+        "status": "FAIL",
+        "checks": {
+          "clean_room": true,
+          "decisions": true,
+          "demonstrated_red": true,
+          "exercised_assertions": true,
+          "flaky_lane": true,
+          "full_suite": false,
+          "governor_proven": true,
+          "live_path": true,
+          "load_bearing": true,
+          "manifest_complete": true,
+          "oracle_independence": true,
+          "oracle_integrity": false
+        },
+        "failed_checks": [
+          "full_suite",
+          "oracle_integrity"
+        ]
+      },
+      "evidence_sha256": "a1b3d5cf9f3d82a65a95fdfa3ea0c31f612cc7ba9c855efffadc581fb657e17e"
+    }
+  },
+  "bindings": {
+    "preregistration_sha256": "737d2a626b8d2fc37040ec6f5b0c6aef5283dbd49e41fe62a513eaf7ace6b848",
+    "corpus_sha256": "b6edbe5a33e2a61a179d4bd322df069e5eea0f548606832d49461f68f19bf8de",
+    "engine_sha256": "977aa4ffe1f04d4d07e5b578b50b6c7f1aae5fbcf51e9b5a7025f9deaae73744",
+    "schemas_sha256": "e5f493cf4e55f32b62e11c6a5e71f75e7afade11a8c63a27ff85254a29acf845",
+    "trusted_release_sha256": "5d2153cf635f353e6c79f38a4e54959132a1ca3cc6265d2a1ad4cab61b15d88a"
+  },
+  "receipt_sha256": "9207b7096a06b068b8dc734386edc963445817696a12fb0c5b88c51cc1f55ef1"
+}

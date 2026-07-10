@@ -90,7 +90,6 @@ ceremony_gating = posture != "quiet"
 # When CLAUDE_AGENT_NAME is set, load the posture file. A reviewer-posture
 # agent is blocked from any bash command that writes to the work tree (the
 # WRITE_TOKENS heuristic catches shell writes). Read-only commands pass through.
-import fnmatch as _fnmatch
 _agent_name = os.environ.get("CLAUDE_AGENT_NAME", "")
 _posture = {}
 if _agent_name:

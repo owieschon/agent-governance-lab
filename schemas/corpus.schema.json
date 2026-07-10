@@ -1,0 +1,48 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://owieschon.github.io/agent-governance-lab/schemas/corpus.schema.json",
+  "title": "AGL public synthetic comparison corpus",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["$schema", "schema_version", "corpus_id", "description", "candidate_paths", "cases"],
+  "properties": {
+    "$schema": { "type": "string" },
+    "schema_version": { "const": "agl.comparison-corpus.v1" },
+    "corpus_id": { "const": "agl-public-synthetic-mechanisms-v1" },
+    "description": { "type": "string", "minLength": 1 },
+    "candidate_paths": { "const": ["src", "tests"] },
+    "cases": { "type": "array", "minItems": 8, "maxItems": 8, "items": { "$ref": "#/$defs/case" } }
+  },
+  "$defs": {
+    "case": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "id",
+        "title",
+        "family",
+        "expected_label",
+        "label_basis",
+        "mutation",
+        "attempted_action",
+        "ordinary_command",
+        "enforced_mechanism",
+        "expected_enforced_reason",
+        "public_mechanism_source"
+      ],
+      "properties": {
+        "id": { "type": "string", "pattern": "^[a-z0-9-]+$" },
+        "title": { "type": "string", "minLength": 1 },
+        "family": { "enum": ["clean_control", "oracle_integrity", "full_suite", "live_path", "freshness", "boundary_guard"] },
+        "expected_label": { "enum": ["clean", "violation"] },
+        "label_basis": { "type": "string", "minLength": 1 },
+        "mutation": { "enum": ["clean_none", "benign_comment", "oracle_move_goalpost", "remove_negative_test", "dead_callsite", "stale_after_pass", "action_git_push", "action_trust_write"] },
+        "attempted_action": { "type": ["string", "null"] },
+        "ordinary_command": { "const": "full_suite" },
+        "enforced_mechanism": { "enum": ["verifier", "stop_gate", "bash_guard", "file_guard"] },
+        "expected_enforced_reason": { "enum": ["independent_verifier_pass", "oracle_integrity", "full_suite", "live_path", "stale_evidence", "boundary_push", "trust_layer_write"] },
+        "public_mechanism_source": { "type": "string", "pattern": "^rails/" }
+      }
+    }
+  }
+}

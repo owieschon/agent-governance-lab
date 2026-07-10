@@ -1,0 +1,228 @@
+<!doctype html>
+<html lang="en" data-state="loading">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="A preregistered, receipt-backed comparison of advisory tests and enforced release governance on a public synthetic corpus.">
+    <meta name="theme-color" content="#102a3a">
+    <title>Same bytes, different authority · Agent Governance Lab</title>
+    <link rel="stylesheet" href="styles.css">
+    <script src="trusted-release.js" defer></script>
+    <script src="verification.js" defer></script>
+    <script src="app.js" defer></script>
+  </head>
+  <body>
+    <a class="skip-link" href="#main">Skip to comparison</a>
+
+    <header class="hero">
+      <nav class="nav shell" aria-label="Primary">
+        <a class="wordmark" href="#top" aria-label="Agent Governance Lab home">
+          <span aria-hidden="true">AGL</span>
+          <span>Agent Governance Lab</span>
+        </a>
+        <a href="https://github.com/owieschon/3xit2_demo">Public source</a>
+      </nav>
+
+      <div class="hero-inner shell" id="top">
+        <div class="hero-copy">
+          <p class="eyebrow">Preregistered mechanism comparison · public synthetic corpus</p>
+          <h1>Same bytes.<br><span>Different authority.</span></h1>
+          <p class="lede">Ordinary tests can be green while the release claim is wrong. This experiment sends one immutable candidate envelope through written rules and an independent release gate, then publishes the receipts.</p>
+        </div>
+        <div class="verification-seal" id="dataset-seal" role="status" aria-live="polite">
+          <span class="seal-mark" aria-hidden="true"></span>
+          <span>
+            <strong id="seal-title">Checking dataset digest</strong>
+            <small id="seal-detail">Headline counts stay hidden until the browser verifies the checked-in JSON.</small>
+          </span>
+        </div>
+      </div>
+    </header>
+
+    <main id="main">
+      <section class="readout shell" aria-labelledby="readout-title">
+        <header class="section-heading">
+          <div>
+            <p class="eyebrow">Confirmatory slice · L1 versus L3</p>
+            <h2 id="readout-title">What happened at the release boundary</h2>
+          </div>
+          <p id="scope-copy">Fixed cases, fixed labels, integer denominators. This is a mechanism demonstration—not a population estimate.</p>
+        </header>
+
+        <div class="contrast" id="headline-metrics" hidden>
+          <article class="policy-lane advisory" aria-labelledby="advisory-title">
+            <p class="lane-code">L1</p>
+            <h3 id="advisory-title">Written rules<br>+ ordinary tests</h3>
+            <p class="metric"><strong id="l1-contained">—</strong><span>violations contained</span></p>
+            <p class="small-metric"><strong id="l1-clean">—</strong> clean controls blocked</p>
+          </article>
+
+          <div class="candidate-spine" aria-label="Both policies receive identical candidate bytes">
+            <span class="digest-pulse" aria-hidden="true"></span>
+            <strong>same candidate bytes</strong>
+            <code id="shared-digest">digest per case</code>
+          </div>
+
+          <article class="policy-lane enforced" aria-labelledby="enforced-title">
+            <p class="lane-code">L3</p>
+            <h3 id="enforced-title">Independent gate<br>with release authority</h3>
+            <p class="metric"><strong id="l3-contained">—</strong><span>violations contained</span></p>
+            <p class="small-metric"><strong id="l3-clean">—</strong> clean controls blocked</p>
+          </article>
+        </div>
+
+        <div class="refusal" id="result-refusal" hidden role="alert">
+          <p class="eyebrow">Fail-closed analysis</p>
+          <h3>NO_CONFIRMATORY_RESULT</h3>
+          <p id="refusal-reason">A binding or label needed by the preregistered analysis did not hold. Headline metrics are suppressed.</p>
+        </div>
+      </section>
+
+      <section class="treatment-section shell" aria-labelledby="treatment-title">
+        <header class="section-heading compact">
+          <div>
+            <p class="eyebrow">Treatment design</p>
+            <h2 id="treatment-title">Observation is not enforcement</h2>
+          </div>
+          <p>The four-arm ladder separates task behavior, written discipline, the effect of being watched, and actual release authority. Only L1 → L3 is the headline contrast.</p>
+        </header>
+        <ol class="treatment-rail" id="treatment-rail">
+          <li><b>L0</b><span>Task only</span><small>No governance surface</small></li>
+          <li><b>L1</b><span>Written rules</span><small>Green ordinary tests release</small></li>
+          <li><b>SHAM</b><span>Visible gate</span><small>Same finding as L3, never blocks</small></li>
+          <li class="authority"><b>L3</b><span>Enforced gate</span><small>The finding can stop release</small></li>
+        </ol>
+      </section>
+
+      <section class="ledger-section" aria-labelledby="ledger-title">
+        <div class="shell">
+          <header class="section-heading compact">
+            <div>
+              <p class="eyebrow">Eight executable cases</p>
+              <h2 id="ledger-title">The release ledger</h2>
+            </div>
+            <p>Select a row to inspect its bound evidence. Each receipt repeats all four treatment digests and proves they are equal.</p>
+          </header>
+
+          <div class="ledger-head" aria-hidden="true">
+            <span>Case / expected label</span>
+            <span>L1 decision</span>
+            <span>candidate SHA-256</span>
+            <span>L3 decision</span>
+            <span></span>
+          </div>
+          <ol class="case-ledger" id="case-ledger" aria-label="Comparison cases">
+            <li class="loading-row">Loading checked-in receipts…</li>
+          </ol>
+        </div>
+      </section>
+
+      <section class="invalidity-section shell" aria-labelledby="invalidity-title">
+        <div class="invalidity-rule" aria-hidden="true">
+          <span>preregistration</span>
+          <i></i>
+          <span>bindings</span>
+          <i></i>
+          <span>labels</span>
+          <i></i>
+          <strong>result</strong>
+        </div>
+        <div class="invalidity-copy">
+          <p class="eyebrow">The refusal is part of the product</p>
+          <h2 id="invalidity-title">Drift the lock or remove a label: the numbers disappear.</h2>
+          <p>The checked-in invalidity control returns <code>NO_CONFIRMATORY_RESULT</code> with <code>headline_metrics: null</code>. It is the same structural rule used by the generator, not an editorial disclaimer added afterward.</p>
+        </div>
+      </section>
+
+      <section class="history-section shell" aria-labelledby="history-title">
+        <header class="section-heading compact">
+          <div>
+            <p class="eyebrow">Historical integrity case · excluded from this corpus</p>
+            <h2 id="history-title">72 completed records. No earned treatment result.</h2>
+          </div>
+          <strong class="status-stamp plum" id="history-status">NO_CONFIRMATORY_RESULT</strong>
+        </header>
+        <div class="history-body">
+          <p>A prior four-arm study preserved its run records but halted before grading when its frozen record → grade seam failed. The explorer keeps that invalidity decision intact; repaired plumbing does not retroactively turn the historical run into a success.</p>
+          <ul id="history-reasons">
+            <li>Loading preserved invalidity reasons…</li>
+          </ul>
+        </div>
+      </section>
+
+      <section class="decision-section" aria-labelledby="decision-title">
+        <div class="shell decision-inner">
+          <header>
+            <p class="eyebrow">Separate engineering-decision case · not benchmark evidence</p>
+            <h2 id="decision-title">The transport finished. The judge still failed its gate.</h2>
+            <p>Operational completion and fidelity were different claims, so they received different decisions.</p>
+          </header>
+          <dl class="decision-ledger">
+            <div><dt>Transport</dt><dd><strong id="transport-count">127/127</strong><span>completed, zero crashes</span></dd></div>
+            <div><dt>Committed kappa band</dt><dd><strong id="kappa-readout">0.98 ∉ [1.0, 1.0]</strong><span>clean safety boundary</span></dd></div>
+            <div><dt>False-opens</dt><dd><strong id="false-open-readout">1 vs 0</strong><span>candidate versus reference</span></dd></div>
+            <div class="stop"><dt>Release</dt><dd><strong>STOP</strong><span>no widened threshold, no favorable rerun</span></dd></div>
+          </dl>
+          <p class="source-pin">Commit-pinned source <code id="engineering-pin">2de5231…</code> · SHA-256 <code id="engineering-digest">26f277d…</code></p>
+        </div>
+      </section>
+
+      <section class="boundary-section shell" aria-labelledby="boundary-title">
+        <header class="section-heading compact">
+          <div>
+            <p class="eyebrow">Honest trust boundary</p>
+            <h2 id="boundary-title">What these receipts establish—and what they do not</h2>
+          </div>
+        </header>
+        <div class="boundary-columns">
+          <div>
+            <h3>Bound here</h3>
+            <p>Public fixture bytes, case labels, treatment rules, mechanism outputs, candidate equality, source pins, integer denominators, and content-addressed receipts.</p>
+          </div>
+          <div>
+            <h3>Outside the claim</h3>
+            <p>Hostile-agent containment, population effectiveness, model quality, productivity, customer outcomes, and any private task, transcript, or dataset.</p>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer class="footer shell">
+      <p>Agent Governance Lab · generated from checked-in public mechanisms</p>
+      <p><span id="footer-status">Dataset verification pending</span> · <code id="footer-digest">—</code></p>
+    </footer>
+
+    <dialog class="case-dialog" id="case-dialog" aria-labelledby="dialog-title">
+      <div class="dialog-head">
+        <div>
+          <p class="eyebrow" id="dialog-family">Case receipt</p>
+          <h2 id="dialog-title">Evidence</h2>
+        </div>
+        <button class="close-button" type="button" id="dialog-close" aria-label="Close case details">Close</button>
+      </div>
+      <div class="receipt-status" id="receipt-status" role="status" aria-live="polite">Loading and verifying receipt…</div>
+      <div class="dialog-body">
+        <section aria-labelledby="candidate-title">
+          <h3 id="candidate-title">Candidate equality</h3>
+          <code class="long-digest" id="dialog-candidate">—</code>
+          <p id="dialog-equality">All treatment digests must match.</p>
+        </section>
+        <section class="dialog-policies" aria-label="Treatment evidence">
+          <div><span>L1 · ordinary tests</span><strong id="dialog-l1">—</strong><small id="dialog-l1-evidence">—</small></div>
+          <div><span>L3 · enforced</span><strong id="dialog-l3">—</strong><small id="dialog-l3-evidence">—</small></div>
+        </section>
+        <section aria-labelledby="source-title">
+          <h3 id="source-title">Public mechanism source</h3>
+          <code id="dialog-source">—</code>
+          <p id="dialog-label-basis">—</p>
+        </section>
+        <details>
+          <summary>Inspect the canonical receipt</summary>
+          <pre id="dialog-json"></pre>
+        </details>
+      </div>
+    </dialog>
+
+    <noscript><p class="noscript">JavaScript is required to verify the dataset digest and reveal the comparison.</p></noscript>
+  </body>
+</html>

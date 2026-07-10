@@ -18,7 +18,10 @@ carries the rest as overflow, and writes the filed count to <filed-out> for the
 shell. The body lives here rather than a bash heredoc so it reads and tests on
 its own. Lives in the trust layer; not agent-editable.
 """
-import hashlib, json, os, sys
+import hashlib
+import json
+import os
+import sys
 
 root, name, defp, candp, ts, filedf = sys.argv[1:7]
 d = json.load(open(defp))
