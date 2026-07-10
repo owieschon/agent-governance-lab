@@ -104,12 +104,14 @@ if _agent_name:
 
 PROTECTED_PATHS = [
     "rails/verifier",
+    "rails/agl",
     ".claude/hooks",
     ".claude/settings.json",
     ".claude/settings.local.json",
     "rails/evidence",      # only verify.sh writes verdicts
     "rails/adversarial",   # the eval is part of the governor
     "rails/config.json",   # verifier inputs; softening = weakening
+    "bin/agl",             # canonical trust-layer entrypoint
     "GOVERNOR_LOG.md",     # append-only ledger (historical record)
 ]
 

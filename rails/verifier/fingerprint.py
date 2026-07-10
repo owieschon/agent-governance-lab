@@ -5,8 +5,9 @@ what the checks catch. verify.sh refuses to gate work if this fingerprint
 does not match the one stamped by the last full adversarial-eval pass
 (spec section 4: a framework change runs the eval BEFORE it takes force).
 
-Covered: rails/verifier/**, .claude/hooks/**, .claude/settings.json,
-rails/adversarial/** (excluding registry.json, which is the stamp itself).
+Covered: rails/verifier/**, rails/agl/**, .claude/hooks/**,
+.claude/settings.json, bin/agl, and rails/adversarial/** (excluding
+registry.json, which is the stamp itself).
 Deliberately NOT covered: rails/config.json (per-repo adapter; the eval
 proves mechanisms in its own sandbox, so adapter changes do not invalidate
 the mechanism proof).
@@ -21,8 +22,8 @@ root = os.environ.get("CLAUDE_PROJECT_DIR") or os.getcwd()
 if len(sys.argv) > 1:
     root = sys.argv[1]
 
-targets = ["rails/verifier", ".claude/hooks", "rails/adversarial"]
-single_files = [".claude/settings.json"]
+targets = ["rails/verifier", "rails/agl", ".claude/hooks", "rails/adversarial"]
+single_files = [".claude/settings.json", "bin/agl"]
 # registry.json is the stamp itself (its presence must not change the very
 # fingerprint it records).
 EXCLUDE_NAMES = {"registry.json", "__pycache__"}

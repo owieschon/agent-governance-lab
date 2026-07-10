@@ -30,8 +30,13 @@ import sys
 # so it stays floor-blocked even in observe mode. (Governed CONTENT -- the
 # agent's own tests/oracle, evidence, config, inbox -- is observable, not
 # apparatus: watching the agent touch those is the point.)
-APPARATUS_PREFIXES = ("rails/verifier", ".claude/hooks", "rails/adversarial")
-APPARATUS_FILES = (".claude/settings.json", ".claude/settings.local.json")
+APPARATUS_PREFIXES = (
+    "rails/verifier",
+    "rails/agl",
+    ".claude/hooks",
+    "rails/adversarial",
+)
+APPARATUS_FILES = (".claude/settings.json", ".claude/settings.local.json", "bin/agl")
 
 
 def is_apparatus(rel: str) -> bool:

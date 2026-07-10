@@ -152,6 +152,7 @@ if _agent_name:
 
 PROTECTED_PREFIXES = [
     "rails/verifier",      # the checks, baseline, load-bearing list
+    "rails/agl",           # canonical CLI implementation + receipt verifier
     ".claude/hooks",       # these guards
     "rails/evidence",      # verdicts: only verify.sh writes here; a forged
                            # PASS is the self-grading loop in miniature
@@ -170,6 +171,7 @@ PROTECTED_FILES = [
     ".claude/settings.local.json",
     "rails/config.json",   # test_cmd/count_regex ARE the verifier's inputs;
                            # softening them is weakening a check
+    "bin/agl",             # canonical trust-layer entrypoint
     "GOVERNOR_LOG.md",     # append-only ledger (historical record)
 ]
 

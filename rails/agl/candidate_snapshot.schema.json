@@ -1,0 +1,63 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://github.com/owieschon/agent-governance-lab/blob/main/rails/agl/candidate_snapshot.schema.json",
+  "title": "Agent Governance Lab candidate snapshot",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "$schema",
+    "schema_version",
+    "candidate_paths",
+    "entries",
+    "entry_count",
+    "decoded_bytes",
+    "content_sha256"
+  ],
+  "properties": {
+    "$schema": { "const": "rails/agl/candidate_snapshot.schema.json" },
+    "schema_version": { "const": "agl.candidate-snapshot.v1" },
+    "candidate_paths": {
+      "type": "array",
+      "minItems": 1,
+      "maxItems": 256,
+      "uniqueItems": true,
+      "items": {
+        "type": "string",
+        "minLength": 1,
+        "maxLength": 4096
+      }
+    },
+    "entries": {
+      "type": "array",
+      "maxItems": 256,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["path", "kind", "data_base64"],
+        "properties": {
+          "path": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 4096
+          },
+          "kind": { "enum": ["file", "symlink"] },
+          "data_base64": { "type": "string" }
+        }
+      }
+    },
+    "entry_count": {
+      "type": "integer",
+      "minimum": 0,
+      "maximum": 256
+    },
+    "decoded_bytes": {
+      "type": "integer",
+      "minimum": 0,
+      "maximum": 1048576
+    },
+    "content_sha256": {
+      "type": "string",
+      "pattern": "^[0-9a-f]{64}$"
+    }
+  }
+}

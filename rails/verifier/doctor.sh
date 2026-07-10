@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 #
-# doctor.sh -- preflight health check for an 3xit2 install.
+# doctor.sh -- preflight health check for an Agent Governance Lab install.
 #
 # Read-only. Prints PASS/FAIL/WARN per item and exits non-zero if any item
 # FAILs, so /go can stop a dispatch before building on a broken install.
@@ -37,7 +37,7 @@ def load(path):
         return None
 
 
-print(f"3xit2 doctor: {root}\n")
+print(f"Agent Governance Lab doctor: {root}\n")
 
 # ---- 1. governor proven + fingerprint matches the stamp -------------------
 reg = load(os.path.join(root, "rails", "adversarial", "registry.json"))

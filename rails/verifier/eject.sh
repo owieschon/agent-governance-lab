@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 #
-# eject.sh [--purge-history] [--yes] -- remove the 3xit2 trust layer.
+# eject.sh [--purge-history] [--yes] -- remove Agent Governance Lab.
 #
 # The complement of install: a tool you cannot cleanly leave is one you cannot
 # safely adopt.
@@ -11,7 +11,7 @@
 # install-after-eject round-trips to fresh-install + preserved history.
 #   REMOVED:   hooks, verifier trust scripts, eval harness + core cases,
 #              rails commands, agents/reviewer.md, postures/,
-#              docs/OPERATING.md, the CLAUDE.md rails block,
+#              docs/OPERATING.md, docs/EVIDENCE_CONTRACT.md, the CLAUDE.md rails block,
 #              and the rails hook entries in .claude/settings.json (surgical --
 #              any other hooks you added are left intact).
 #   PRESERVED (default): config.json, baseline.json, load_bearing.txt,
@@ -59,7 +59,7 @@ OBSERVERS="run_observer.sh run_observer.py extract.py sentry.json phoenix.json l
 posthog.json ci.json deps.json drift.json"
 
 if [ "$YES" -ne 1 ]; then
-  say "This removes the 3xit2 trust layer from $ROOT."
+  say "This removes Agent Governance Lab from $ROOT."
   [ "$PURGE" -eq 1 ] && say "--purge-history: per-repo history (dispatches/evidence/incidents/GOVERNOR_LOG) will ALSO be removed."
   say "Per-repo config and history are preserved by default. Re-run with --yes to proceed."
   exit 1
@@ -69,12 +69,15 @@ for f in $HOOKS;         do rm_path ".claude/hooks/$f"; done
 for f in $CMDS;          do rm_path ".claude/commands/$f"; done
 for f in $VERIF_SCRIPTS; do rm_path "rails/verifier/$f"; done
 for f in $ADV_HARNESS;   do rm_path "rails/adversarial/$f"; done
+rm_path "rails/agl"
+rm_path "bin/agl"
 [ -d rails/adversarial/cases/core ] && { rm -rf rails/adversarial/cases/core; REMOVED+=("rails/adversarial/cases/core/"); }
 # pre-push hook (structural push gate installed into .git/hooks/)
 if [ -f .git/hooks/pre-push ] && grep -q "3xit2" .git/hooks/pre-push 2>/dev/null; then
   rm -f .git/hooks/pre-push; REMOVED+=(".git/hooks/pre-push (structural push gate)")
 fi
 rm_path "docs/OPERATING.md"
+rm_path "docs/EVIDENCE_CONTRACT.md"
 rm_path ".claude/skills/rails"
 # role kernel: postures + reviewer agent definition
 rm_path "rails/verifier/postures"
@@ -152,7 +155,7 @@ else
   for f in $PRESERVE; do keep_note "$f"; done
 fi
 
-say "ejected 3xit2 from $ROOT."
+say "ejected Agent Governance Lab from $ROOT."
 say ""
 say "removed (${#REMOVED[@]}):"
 for r in "${REMOVED[@]}"; do say "  - $r"; done
