@@ -1,0 +1,52 @@
+name: pages
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  actions: read
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: pages
+  cancel-in-progress: true
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    timeout-minutes: 8
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.x"
+      - uses: actions/configure-pages@v5
+      - name: Refuse mutable source or schema rebinding
+        run: python3 scripts/render_trusted_release.py --check
+      - name: Refuse stale or invalid comparison data
+        run: ./bin/agl compare --check
+      - name: Assemble static artifact
+        run: |
+          mkdir -p _site/schemas _site/experiment
+          cp -rf explorer/. _site/
+          cp -f schemas/*.json _site/schemas/
+          cp -f experiment/preregistration.json experiment/corpus.json experiment/bindings.json experiment/trusted-release.json _site/experiment/
+      - uses: actions/upload-pages-artifact@v3
+        with:
+          path: _site
+
+  deploy:
+    needs: build
+    runs-on: ubuntu-latest
+    timeout-minutes: 8
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - name: Deploy Pages artifact
+        id: deployment
+        uses: actions/deploy-pages@v4

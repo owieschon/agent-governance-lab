@@ -65,7 +65,8 @@ def parse_findings(path):
             rm_ = re.match(r"^##\s+(CONTRACT|JUDGMENT)\s*$", line)
             im = re.match(r"^###\s+(.+)$", line)
             if rm_:
-                close(current); current = None
+                close(current)
+                current = None
                 register = rm_.group(1).lower()
             elif im and register:
                 close(current)

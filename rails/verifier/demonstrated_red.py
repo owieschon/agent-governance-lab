@@ -13,7 +13,12 @@ the targeted test passes on the real code, goes RED on the applied break, and
 passes again after the files are restored. A test never seen red is unproven.
 Prints "OK" or "FAIL: ...".
 """
-import json, os, shutil, subprocess, sys, tempfile
+import json
+import os
+import shutil
+import subprocess
+import sys
+import tempfile
 
 root, manifest_path, evid = sys.argv[1], sys.argv[2], sys.argv[3]
 log = open(os.path.join(evid, "demonstrated_red.log"), "w")
@@ -42,9 +47,11 @@ def sh(cmd, bust=None):
 try:
     plan = json.load(open(manifest_path)).get("break_plan", [])
 except Exception:
-    print("FAIL: no readable break_plan"); sys.exit(0)
+    print("FAIL: no readable break_plan")
+    sys.exit(0)
 if not plan:
-    print("FAIL: empty break_plan"); sys.exit(0)
+    print("FAIL: empty break_plan")
+    sys.exit(0)
 
 problems = []
 for i, item in enumerate(plan):

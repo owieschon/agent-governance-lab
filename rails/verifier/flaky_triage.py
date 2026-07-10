@@ -14,7 +14,13 @@ own; flaky_triage.sh is a thin shim that resolves <root>, cds into it, and
 execs this. Read-only on your work tree. Lives in the trust layer; not
 agent-editable.
 """
-import datetime, json, os, re, shutil, subprocess, sys
+import datetime
+import json
+import os
+import re
+import shutil
+import subprocess
+import sys
 root = sys.argv[1]
 try:
     cfg = json.load(open(os.path.join(root, "rails", "config.json")))

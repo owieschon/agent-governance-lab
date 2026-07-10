@@ -1,0 +1,31 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://owieschon.github.io/agent-governance-lab/schemas/historical-study.schema.json",
+  "title": "Historical invalidity case",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["$schema", "schema_version", "case_id", "title", "separation", "design", "historical_record", "invalidity_reasons", "decision", "claim_boundary", "public_snapshot_sources"],
+  "properties": {
+    "$schema": { "type": "string" },
+    "schema_version": { "const": "agl.historical-study.v1" },
+    "case_id": { "const": "historical-stage-1-invalidity" },
+    "title": { "type": "string" },
+    "separation": { "type": "string" },
+    "design": { "type": "object", "required": ["paired", "treatments", "purpose"] },
+    "historical_record": { "type": "object", "required": ["primary_runs", "records_intact", "hash_chain_verified", "terminal_tree_hashes_recomputed"] },
+    "invalidity_reasons": { "type": "array", "minItems": 3, "items": { "type": "string" } },
+    "decision": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["status", "headline_metrics", "grading_halted", "historical_run_rewritten_as_success"],
+      "properties": {
+        "status": { "const": "NO_CONFIRMATORY_RESULT" },
+        "headline_metrics": { "const": null },
+        "grading_halted": { "const": true },
+        "historical_run_rewritten_as_success": { "const": false }
+      }
+    },
+    "claim_boundary": { "type": "string" },
+    "public_snapshot_sources": { "type": "array", "minItems": 4, "maxItems": 4, "items": { "type": "string" } }
+  }
+}

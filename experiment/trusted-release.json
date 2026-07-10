@@ -1,0 +1,108 @@
+{
+  "$schema": "../schemas/trusted-release.schema.json",
+  "schema_version": "agl.comparison-trusted-release.v1",
+  "protocol_id": "agl-advisory-v-enforced-2026-07-10",
+  "locked_at": "2026-07-10",
+  "files": [
+    {
+      "path": ".claude/hooks/gate_stop.py",
+      "sha256": "2c5a0acbe48a058da84398c1c11cdcedcdb83b4040392dd7df1fbdf44e9b45ce"
+    },
+    {
+      "path": ".claude/hooks/guard_bash.py",
+      "sha256": "4aacae673afd173a501a0c2e513597973f7772dd105206cb3ab879e4532a0d1e"
+    },
+    {
+      "path": ".claude/hooks/guard_files.py",
+      "sha256": "1db52c600cd8705c712426ad0ddbc4d931e66acea819976cc02ae6ca355e1f2e"
+    },
+    {
+      "path": "experiment/bindings.json",
+      "sha256": "dcffbdc9e10755f86c9f4813f690fab65e074a5020adb28c2b6561ac536194df"
+    },
+    {
+      "path": "experiment/corpus.json",
+      "sha256": "b6edbe5a33e2a61a179d4bd322df069e5eea0f548606832d49461f68f19bf8de"
+    },
+    {
+      "path": "experiment/engineering-decision.json",
+      "sha256": "da136e954bc77ee780c4e6f3a73af1b16b51d6678d71574bb5c2b092fb9ae92e"
+    },
+    {
+      "path": "experiment/historical-study.json",
+      "sha256": "c0bb50368281936aafb778dd33d5ea7ddad6b23ddf51432eb42574b11b375168"
+    },
+    {
+      "path": "experiment/preregistration.json",
+      "sha256": "737d2a626b8d2fc37040ec6f5b0c6aef5283dbd49e41fe62a513eaf7ace6b848"
+    },
+    {
+      "path": "explorer/app.js",
+      "sha256": "be79c4f144200591f73c1c2036bbe2bb56033e98948adaf82af4b928ccf99250"
+    },
+    {
+      "path": "explorer/index.html",
+      "sha256": "4436dd7fde01246cde19615179481eb22f8c5b23172a131473c8fb426adde986"
+    },
+    {
+      "path": "explorer/styles.css",
+      "sha256": "9bb0c791462cc1be79ac17874f3617c82d17d1348ebc65f774b65e682d48fb1a"
+    },
+    {
+      "path": "explorer/verification.js",
+      "sha256": "5053c5d4da113d96cdba04ec89c2219045f78369d867a2691c11a281feb7a4af"
+    },
+    {
+      "path": "rails/adversarial/fixture.sh",
+      "sha256": "e2410df50acd783fee18d1906a01f35f5d842d7c4e0ea3df1af25008d61a56f7"
+    },
+    {
+      "path": "rails/agl/cli.py",
+      "sha256": "c15eb44c441c26b009628a77d4c576d36c2c620935a72b9d0dc1ac92feea0228"
+    },
+    {
+      "path": "rails/agl/comparison.py",
+      "sha256": "86636b76ccafc1b852cba2b5c9b8cc6820653a8aef0d876b83d67ccfad1c1d6f"
+    },
+    {
+      "path": "rails/verifier/verify.sh",
+      "sha256": "f99bf651006733211a9e338548997e097cffb22d217cfe8634c5d3baff1f4dbe"
+    },
+    {
+      "path": "schemas/bindings.schema.json",
+      "sha256": "d7a0f72746c9953c27863976d63a788cc4c936f625e49602e09c51b9b9841828"
+    },
+    {
+      "path": "schemas/comparison-case-receipt.schema.json",
+      "sha256": "c07c17a5649b7a5ae3fa940a054a4f0aa7818e0ddec302b8068cba24b0ddb398"
+    },
+    {
+      "path": "schemas/comparison-result.schema.json",
+      "sha256": "a50b5670001a3179563bda00b846d8382bc5bb0c842945b2a4ff8faf1dac9964"
+    },
+    {
+      "path": "schemas/corpus.schema.json",
+      "sha256": "64d1802948b08fead502a20b4ea715dd9a12f07da49518d47dfe6eb65e570f3d"
+    },
+    {
+      "path": "schemas/engineering-decision.schema.json",
+      "sha256": "628cdab84406ca234d2d52fdac84930b2c9194b1a998e3e481a380e6578166af"
+    },
+    {
+      "path": "schemas/historical-study.schema.json",
+      "sha256": "3214ae62610eeb4074e5eec911df8525680bd9ec6f01b9a23bb0a66ead2caea5"
+    },
+    {
+      "path": "schemas/preregistration.schema.json",
+      "sha256": "27619c2d719486a407ae9821ea551fd38dbfbfb43edc44c12e6f52874473a248"
+    },
+    {
+      "path": "schemas/trusted-release.schema.json",
+      "sha256": "9a3360d677a097da97fc205e9aa56684da66aba6733efedd1d703a4c55829b6e"
+    },
+    {
+      "path": "scripts/verify_engineering_source.py",
+      "sha256": "48fb0430c35773e58382de685a3020d666dd431af4e5e902d6bf490522221abf"
+    }
+  ]
+}

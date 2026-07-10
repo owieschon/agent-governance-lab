@@ -114,7 +114,7 @@ if __name__ == "__main__":
     if not os.path.exists(path):
         print("no observations recorded (rails/observations.jsonl is empty/absent)")
         sys.exit(0)
-    rows = [json.loads(l) for l in open(path) if l.strip()]
+    rows = [json.loads(line) for line in open(path) if line.strip()]
     print(f"observations: {len(rows)}\n")
     for r in rows:
         print(f"  {r.get('ts','')[:19]}  {r.get('kind',''):18} {r.get('message','')[:90]}")

@@ -1,0 +1,52 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://owieschon.github.io/agent-governance-lab/schemas/engineering-decision.schema.json",
+  "title": "Transport-fidelity engineering decision",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["$schema", "schema_version", "case_id", "title", "separation", "source", "transport", "fidelity_gate", "release", "claim_boundary"],
+  "properties": {
+    "$schema": { "type": "string" },
+    "schema_version": { "const": "agl.engineering-decision.v1" },
+    "case_id": { "const": "judge-transport-fidelity-r0" },
+    "title": { "type": "string" },
+    "separation": { "type": "string" },
+    "source": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["repository", "commit", "path", "sha256"],
+      "properties": {
+        "repository": { "const": "owieschon/ultra-csm" },
+        "commit": { "type": "string", "pattern": "^[0-9a-f]{40}$" },
+        "path": { "type": "string" },
+        "sha256": { "type": "string", "pattern": "^[0-9a-f]{64}$" }
+      }
+    },
+    "transport": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["completed", "total", "clean_layer_items", "adversarial_layer_items", "crashes", "decision"],
+      "properties": {
+        "completed": { "const": 127 },
+        "total": { "const": 127 },
+        "clean_layer_items": { "const": 63 },
+        "adversarial_layer_items": { "const": 64 },
+        "crashes": { "const": 0 },
+        "decision": { "const": "pass" }
+      }
+    },
+    "fidelity_gate": { "type": "object", "required": ["clean_safety_boundary", "adversarial_false_opens", "decision"] },
+    "release": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["decision", "threshold_changed_after_result", "favorable_resample_attempted", "passing_artifact_published"],
+      "properties": {
+        "decision": { "const": "stop" },
+        "threshold_changed_after_result": { "const": false },
+        "favorable_resample_attempted": { "const": false },
+        "passing_artifact_published": { "const": false }
+      }
+    },
+    "claim_boundary": { "type": "string" }
+  }
+}
