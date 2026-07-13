@@ -3,6 +3,8 @@
 <!-- clean-docs:purpose -->
 Use this runbook when moving a rails-worthy task from dispatch through human release. It names the two human decisions and the commands between them so you can run the loop without granting the agent authority to approve or release its own work.
 <!-- clean-docs:end purpose -->
+<!-- clean-docs:allow doc-length reason="The dispatch, observer, verification, recovery, and update cycle is one operator contract" -->
+<!-- clean-docs:allow restatement reason="Cron examples intentionally repeat the command wrapper while changing observer and cadence" -->
 
 The daily shape: you spend your time at two points, approving the dispatch and
 reviewing the handoff (release). Everything between is the loop inside the rails.

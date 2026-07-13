@@ -2,13 +2,38 @@ version: 1
 bindings:
   - id: repository-surface
     type: region
-    doc: README.md
+    doc: docs/SURFACE.md
     region: repository-surface
     extractor: repository-overview
     source: {path: .}
     renderer: markdown-fragment
+  - id: comparison-executor
+    type: symbol
+    doc: README.md
+    anchor: the-mechanism
+    source: {path: rails/agl/comparison.py, symbol: run_experiment}
+  - id: receipt-verifier
+    type: symbol
+    doc: docs/CLAIMS.md
+    anchor: trust-boundary
+    source: {path: rails/agl/receipt.py, symbol: verify_receipt}
+  - id: trusted-release-renderer
+    type: symbol
+    doc: docs/CLAIMS.md
+    anchor: integrity-vertical-slice
+    source: {path: scripts/render_trusted_release.py, symbol: expected_manifest}
 projections:
   llms_txt:
     output: llms.txt
     title: Repository documentation
-    summary: Source-bound repository documentation.
+    summary: Canonical lab documentation with source bindings and declared context.
+    include:
+      - README.md
+      - AUDIT.md
+      - docs/CLAIMS.md
+      - docs/DEVELOPMENT.md
+      - docs/EVIDENCE_CONTRACT.md
+      - docs/OPERATING.md
+      - docs/SURFACE.md
+      - isolate/README.md
+      - rails/adversarial/DEPARTURES.md
