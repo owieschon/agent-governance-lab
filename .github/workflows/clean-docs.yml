@@ -1,0 +1,18 @@
+name: clean-docs
+
+on:
+  pull_request:
+  push:
+    branches: [main]
+  schedule:
+    - cron: "17 5 * * *"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  clean-docs:
+    uses: owieschon/clean-docs/.github/workflows/reusable-clean-docs.yml@a7c37ee90c9c6f73af1d73e685be9690d6856b92
+    with:
+      package-ref: a7c37ee90c9c6f73af1d73e685be9690d6856b92
