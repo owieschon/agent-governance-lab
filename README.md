@@ -1,5 +1,9 @@
 # Agent Governance Lab
 
+<!-- clean-docs:purpose -->
+Use this repository when you need to test whether an independent release governor catches coding-agent violations that written rules and green tests miss. It gives reviewers a reproducible eight-case comparison with public receipts, bounded claims, and a deterministic release decision.
+<!-- clean-docs:end purpose -->
+
 [![smoke](https://github.com/owieschon/agent-governance-lab/actions/workflows/prove.yml/badge.svg)](https://github.com/owieschon/agent-governance-lab/actions/workflows/prove.yml)
 
 **Independent release governance for coding-agent work, with public receipts.**
