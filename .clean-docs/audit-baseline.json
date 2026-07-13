@@ -1,0 +1,68 @@
+{
+  "schema": "clean-docs.audit-baseline.v1",
+  "findings": [
+    {
+      "fingerprint": "d130ce146fb082ce6f33ac01f495e20d74ee71a05b734a825062f82ebf3f3616",
+      "rule": "doc-length",
+      "path": "AUDIT.md",
+      "line": 1,
+      "detail": "254 lines exceeds 120; split it or add a reasoned allowance"
+    },
+    {
+      "fingerprint": "974eb992396b5a029f850ab58a2502e1a4b0cbdfbdd2318d956674cd609b8c38",
+      "rule": "section-length",
+      "path": "AUDIT.md",
+      "line": 30,
+      "detail": "'1. The verifier trusts a manifest the agent writes' is 78 lines; split it or add a reasoned allowance"
+    },
+    {
+      "fingerprint": "8951bc95b5188a80025a7a346be3db4ed350a59f51b64b0206d5be59f0455bd2",
+      "rule": "section-length",
+      "path": "AUDIT.md",
+      "line": 108,
+      "detail": "'2. The boundary guards are a pattern matcher, not a sandbox' is 66 lines; split it or add a reasoned allowance"
+    },
+    {
+      "fingerprint": "5788378b7f2da816c5438833cde1fed7a3ea974825cfe0b40cff8a55e2c2758b",
+      "rule": "section-length",
+      "path": "AUDIT.md",
+      "line": 193,
+      "detail": "'4. Code quality' is 50 lines; split it or add a reasoned allowance"
+    },
+    {
+      "fingerprint": "462185f48de222d25d8e3d66d815266780bbb58687c856e2425429546f52f9b3",
+      "rule": "doc-length",
+      "path": "CHANGELOG.md",
+      "line": 1,
+      "detail": "154 lines exceeds 120; split it or add a reasoned allowance"
+    },
+    {
+      "fingerprint": "e7856c4a04880d5ffde3d65eb6a0395e75c9d32659978e500bbdd57751250dea",
+      "rule": "doc-length",
+      "path": "README.md",
+      "line": 1,
+      "detail": "248 lines exceeds 120; split it or add a reasoned allowance"
+    },
+    {
+      "fingerprint": "8882d366c29bb257b0cc414396d20ee33c2b0627b196546e598d1eba1f6a82f7",
+      "rule": "doc-length",
+      "path": "docs/OPERATING.md",
+      "line": 1,
+      "detail": "320 lines exceeds 120; split it or add a reasoned allowance"
+    },
+    {
+      "fingerprint": "50844ed624c281a7ab68832e9df8a4a2e675d50dfeffed90eb838b6b174a5ab5",
+      "rule": "restatement",
+      "path": "docs/OPERATING.md",
+      "line": 135,
+      "detail": "~64% overlap with docs/OPERATING.md:138"
+    },
+    {
+      "fingerprint": "4441e52b428aaff7f7f135b0de86a761eb86617611e7b2bf17a8f250b64fe5f5",
+      "rule": "doc-length",
+      "path": "rails/adversarial/DEPARTURES.md",
+      "line": 1,
+      "detail": "181 lines exceeds 120; split it or add a reasoned allowance"
+    }
+  ]
+}
