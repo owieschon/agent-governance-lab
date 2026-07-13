@@ -1,7 +1,15 @@
 # Repository documentation
 
-> Source-bound repository documentation.
+> Canonical lab documentation with source bindings and declared context.
 
-## Source-bound documentation
+## Canonical documentation
 
-- [README.md](README.md): bindings: repository-surface; sha256: 4f52cf67e8d61ac0ab22f19ec357f30293a994f1f8de7afcefce196e0ce95d9a
+- [AUDIT.md](AUDIT.md): declared canonical context; sha256: 5855a8699625e8f118ef442a5684ff1b66babb88f288d6c72b18239869f31c22
+- [README.md](README.md): bindings: comparison-executor; sha256: 526cfc624028005a032314049e61fd36527239f61bff2aa68e019a73139df63c
+- [docs/CLAIMS.md](docs/CLAIMS.md): bindings: receipt-verifier, trusted-release-renderer; sha256: 1c169015f7c4d28c8e162ed18d3e49569d0642d1d73ea0a004bbba1cc184369b
+- [docs/DEVELOPMENT.md](docs/DEVELOPMENT.md): declared canonical context; sha256: 084a0d42cdc82df2ba36b83e9290ea691e829219d7acca5724eb030b34334369
+- [docs/EVIDENCE_CONTRACT.md](docs/EVIDENCE_CONTRACT.md): declared canonical context; sha256: 8e0533c7c902b063935ee27637ace168c92ce088d3cfc6f63084b8f8599dd2bf
+- [docs/OPERATING.md](docs/OPERATING.md): declared canonical context; sha256: be743e90800d3ada799db2c4c281ee00c7f0ebadc28bcf263774f877cdfedf75
+- [docs/SURFACE.md](docs/SURFACE.md): bindings: repository-surface; sha256: d845f561d573c4397d7818851afccb5370d5603af4a540d3c6389373ad94c31c
+- [isolate/README.md](isolate/README.md): declared canonical context; sha256: e4b6826ab8f55626da0acd627c85923dc7bf868f2663d7b06493b79167dc2242
+- [rails/adversarial/DEPARTURES.md](rails/adversarial/DEPARTURES.md): declared canonical context; sha256: 579594df4e3854c52a85557decd8bf63f04a82a6ee59087cfba9b84eaf89611a
