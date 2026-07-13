@@ -248,5 +248,5 @@ This summary is generated from statically detected package, CLI, API, schema, an
 | test-runner | 2 | `test:e2e`, `test:e2e:update` |
 | test-suite | 6 | `tests/browser/explorer.spec.js`, `tests/test_cli.py`, `tests/test_comparison.py`, and 3 more |
 
-<!-- clean-docs:inventory-sha256 2207e74d7388b3c9a6f8f6108d59a971ac6fd3094187d6efb4e8806f9f54eafc -->
+<!-- clean-docs:inventory-sha256 15d0297089a938ec22a4afbfc4e957cf3b28a82cf6a1b0e2f7044bd93e54b087 -->
 <!-- clean-docs:end repository-surface -->
