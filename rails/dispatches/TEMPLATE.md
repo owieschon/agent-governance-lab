@@ -1,5 +1,9 @@
 # Dispatch: <id>
 
+<!-- clean-docs:purpose -->
+Use this template when a task has both a hard verifier and a bounded blast radius. It turns that task into a reviewable dispatch with explicit proof obligations, break cases, and a definition of done before autonomous work begins.
+<!-- clean-docs:end purpose -->
+
 > One dispatch = one rails-worthy task. A dispatch is rails-worthy only if it
 > passes the human judgment gate: it has a hard verifier AND a bounded blast
 > radius. If either is missing, it stays in human hands and never becomes a

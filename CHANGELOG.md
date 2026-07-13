@@ -1,6 +1,10 @@
 # Changelog
 
-Security-hardening changes since the initial release. Each follows the kit's own
+<!-- clean-docs:purpose -->
+Use this changelog to review security-hardening changes made since the initial release. Each entry connects a reproduced failure to its fix and re-proof, giving you an auditable history of changed guarantees.
+<!-- clean-docs:end purpose -->
+
+Each change follows the kit's own
 process: an adversarial eval case that reproduces the hole (red), the minimal
 fix, the case passing (green), and a full governor re-proof. Every change is
 auditable and the suite stays green.
