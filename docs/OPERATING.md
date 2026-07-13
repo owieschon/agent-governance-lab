@@ -1,5 +1,9 @@
 # Operating the rails
 
+<!-- clean-docs:purpose -->
+Use this runbook when moving a rails-worthy task from dispatch through human release. It names the two human decisions and the commands between them so you can run the loop without granting the agent authority to approve or release its own work.
+<!-- clean-docs:end purpose -->
+
 The daily shape: you spend your time at two points, approving the dispatch and
 reviewing the handoff (release). Everything between is the loop inside the rails.
 
@@ -205,7 +209,7 @@ Three mechanisms, layered:
 Dynamic workflows are Claude writing a JavaScript orchestration script
 that fans tens to hundreds of subagents out in parallel, in the
 background, with the script (not the conversation) holding the plan.
-That is leverage with one catch the framework already names: subagents in a
+That saves operator time with one catch the framework already names: subagents in a
 workflow run with edits auto-approved. So the rule is:
 
 **Workflows get read-heavy, find-don't-fix jobs. Dispatches get the fixes.**

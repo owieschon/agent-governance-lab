@@ -2,67 +2,74 @@
   "schema": "clean-docs.audit-baseline.v1",
   "findings": [
     {
-      "fingerprint": "d130ce146fb082ce6f33ac01f495e20d74ee71a05b734a825062f82ebf3f3616",
+      "fingerprint": "c5fdfbdaf2818885b12852b1fad38629bbfa19c04e364da8b0b7ad26513f75ce",
       "rule": "doc-length",
       "path": "AUDIT.md",
       "line": 1,
-      "detail": "254 lines exceeds 120; split it or add a reasoned allowance"
+      "detail": "257 lines exceeds 120; split it or add a reasoned allowance"
     },
     {
-      "fingerprint": "974eb992396b5a029f850ab58a2502e1a4b0cbdfbdd2318d956674cd609b8c38",
+      "fingerprint": "a74dfc754083762374bd280ee958f6a74e7ed79f89417e5fb415fa14c2569569",
       "rule": "section-length",
       "path": "AUDIT.md",
-      "line": 30,
+      "line": 33,
       "detail": "'1. The verifier trusts a manifest the agent writes' is 78 lines; split it or add a reasoned allowance"
     },
     {
-      "fingerprint": "8951bc95b5188a80025a7a346be3db4ed350a59f51b64b0206d5be59f0455bd2",
+      "fingerprint": "0b7756925e41a0efcf34501b7dee5225ca49536bd4fc0a8654c1bce524f95b60",
       "rule": "section-length",
       "path": "AUDIT.md",
-      "line": 108,
+      "line": 111,
       "detail": "'2. The boundary guards are a pattern matcher, not a sandbox' is 66 lines; split it or add a reasoned allowance"
     },
     {
-      "fingerprint": "5788378b7f2da816c5438833cde1fed7a3ea974825cfe0b40cff8a55e2c2758b",
+      "fingerprint": "d4fd1a9c8e9a8c7a8e997000a37ebdebd6b1c64bd12efc78c631801152879b74",
       "rule": "section-length",
       "path": "AUDIT.md",
-      "line": 193,
+      "line": 196,
       "detail": "'4. Code quality' is 50 lines; split it or add a reasoned allowance"
     },
     {
-      "fingerprint": "462185f48de222d25d8e3d66d815266780bbb58687c856e2425429546f52f9b3",
+      "fingerprint": "589edba1ac8473b0751761f951c6cce0d41efb957663064b905d0bafba884a06",
       "rule": "doc-length",
       "path": "CHANGELOG.md",
       "line": 1,
-      "detail": "154 lines exceeds 120; split it or add a reasoned allowance"
+      "detail": "158 lines exceeds 120; split it or add a reasoned allowance"
     },
     {
-      "fingerprint": "e7856c4a04880d5ffde3d65eb6a0395e75c9d32659978e500bbdd57751250dea",
+      "fingerprint": "a54ab7e50955375016c72874842a89c0067e424cf700555ab2bcb405453d7d99",
+      "rule": "purpose-contract",
+      "path": "CLAUDE.md",
+      "line": 2,
+      "detail": "add exactly one complete marked BLUF purpose contract after the H1"
+    },
+    {
+      "fingerprint": "9b76350b7fb7025f093b49595351d8843af0c747bb796204afae21b0c604c510",
       "rule": "doc-length",
       "path": "README.md",
       "line": 1,
-      "detail": "248 lines exceeds 120; split it or add a reasoned allowance"
+      "detail": "252 lines exceeds 120; split it or add a reasoned allowance"
     },
     {
-      "fingerprint": "8882d366c29bb257b0cc414396d20ee33c2b0627b196546e598d1eba1f6a82f7",
+      "fingerprint": "b40e0e2f3488e550120274ec5e4ea92b1ecebcc53408e10997c72de9a5319175",
       "rule": "doc-length",
       "path": "docs/OPERATING.md",
       "line": 1,
-      "detail": "320 lines exceeds 120; split it or add a reasoned allowance"
+      "detail": "324 lines exceeds 120; split it or add a reasoned allowance"
     },
     {
-      "fingerprint": "50844ed624c281a7ab68832e9df8a4a2e675d50dfeffed90eb838b6b174a5ab5",
+      "fingerprint": "ddae0687fa3f3b1db8a9ad9f2d5f09a3cf665124eb617174d7b0ecfc530d7f11",
       "rule": "restatement",
       "path": "docs/OPERATING.md",
-      "line": 135,
-      "detail": "~64% overlap with docs/OPERATING.md:138"
+      "line": 139,
+      "detail": "~64% overlap with docs/OPERATING.md:142"
     },
     {
-      "fingerprint": "4441e52b428aaff7f7f135b0de86a761eb86617611e7b2bf17a8f250b64fe5f5",
+      "fingerprint": "873091ebe33c781226cf0a2b6cff2b8c088f16cf9e49f63b3b337839905debab",
       "rule": "doc-length",
       "path": "rails/adversarial/DEPARTURES.md",
       "line": 1,
-      "detail": "181 lines exceeds 120; split it or add a reasoned allowance"
+      "detail": "185 lines exceeds 120; split it or add a reasoned allowance"
     }
   ]
 }

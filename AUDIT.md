@@ -1,7 +1,10 @@
 # Adversarial self-audit
 
-An account of where 3xit2 holds and where it does not. It was
-produced by pointing independent audit agents at the kit — four at the
+<!-- clean-docs:purpose -->
+Use this audit when you need to decide which Agent Governance Lab claims hold under its stated threat model. It separates reproduced guarantees from known escape paths so you can distinguish cooperative-agent assurance from hostile-agent containment.
+<!-- clean-docs:end purpose -->
+
+The audit was produced by pointing independent audit agents at the kit — four at the
 soundness of the trust layer (verifier, boundary guards, adversarial eval, and
 the experiment that originally motivated the design) and six at code quality
 (voice, clutter, architecture, language fit, reproducibility, correctness).
