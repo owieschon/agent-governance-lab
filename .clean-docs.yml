@@ -1,0 +1,14 @@
+version: 1
+bindings:
+  - id: repository-surface
+    type: region
+    doc: README.md
+    region: repository-surface
+    extractor: repository-overview
+    source: {path: .}
+    renderer: markdown-fragment
+projections:
+  llms_txt:
+    output: llms.txt
+    title: Repository documentation
+    summary: Source-bound repository documentation.
