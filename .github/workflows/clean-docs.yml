@@ -13,7 +13,6 @@ permissions:
 
 jobs:
   clean-docs:
-    uses: owieschon/clean-docs/.github/workflows/reusable-clean-docs.yml@23ffa6e7fcb48e218fe4a2937a6621bb5daa2ab0
+    uses: owieschon/clean-docs/.github/workflows/reusable-clean-docs.yml@8d9b838c556a34984d0cced063b97dcc2de31618
     with:
-      package-ref: 23ffa6e7fcb48e218fe4a2937a6621bb5daa2ab0
-
+      package-ref: 8d9b838c556a34984d0cced063b97dcc2de31618

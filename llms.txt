@@ -4,4 +4,4 @@
 
 ## Source-bound documentation
 
-- [README.md](README.md): bindings: repository-surface; sha256: e3621612ae446f34475210c843cb242ee663389a8a59df43f36ad146008b4a88
+- [README.md](README.md): bindings: repository-surface; sha256: a69d3b90320ff5c159ea204d949df6977a56c996a2cf3ad76cb636dfe44dd177
