@@ -1,9 +1,9 @@
 # Eval design notes: simplifications and known residuals
 
-<!-- clean-docs:purpose -->
+<!-- sourcebound:purpose -->
 Use these notes when deciding what the adversarial evaluation proves and what remains assumed. They map each deterministic simplification to its residual risk so you can interpret green results without expanding the claim beyond the test design.
-<!-- clean-docs:end purpose -->
-<!-- clean-docs:allow doc-length reason="The eval departures are one canonical claim-boundary reference for the full adversarial suite" -->
+<!-- sourcebound:end purpose -->
+<!-- sourcebound:allow doc-length reason="The eval departures are one canonical claim-boundary reference for the full adversarial suite" -->
 
 This file documents where the adversarial eval deliberately simplifies, and
 what it therefore does NOT prove. Every departure is stated with its grounds.
