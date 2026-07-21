@@ -1,8 +1,8 @@
 # OS-isolation companion (optional)
 
-<!-- clean-docs:purpose -->
+<!-- sourcebound:purpose -->
 Use this companion when the cooperative-agent guards are too weak for your threat model. It moves the protected boundary into container mounts and kernel controls so you can run the loop against an agent that may try to evade command-pattern guards.
-<!-- clean-docs:end purpose -->
+<!-- sourcebound:end purpose -->
 
 The in-process guards (`.claude/hooks/`) are a pattern matcher, not a sandbox.
 They stop a cooperative agent that cuts corners — the kit's stated threat model

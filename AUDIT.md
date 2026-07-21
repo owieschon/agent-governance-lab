@@ -1,9 +1,9 @@
 # Adversarial self-audit
 
-<!-- clean-docs:purpose -->
+<!-- sourcebound:purpose -->
 Use this audit when you need to decide which Agent Governance Lab claims hold under its stated threat model. It separates reproduced guarantees from known escape paths so you can distinguish cooperative-agent assurance from hostile-agent containment.
-<!-- clean-docs:end purpose -->
-<!-- clean-docs:allow doc-length reason="The reproduced findings, repair state, and residual boundary form one canonical threat-model audit" -->
+<!-- sourcebound:end purpose -->
+<!-- sourcebound:allow doc-length reason="The reproduced findings, repair state, and residual boundary form one canonical threat-model audit" -->
 
 The audit was produced by pointing independent audit agents at the kit — four at the
 soundness of the trust layer (verifier, boundary guards, adversarial eval, and
@@ -31,7 +31,7 @@ constraints, not unresolved versions of the closed verifier findings.
 ---
 
 ## 1. The verifier trusts a manifest the agent writes
-<!-- clean-docs:allow section-length reason="The verifier exploit, fix sequence, and regression receipts must be evaluated together" -->
+<!-- sourcebound:allow section-length reason="The verifier exploit, fix sequence, and regression receipts must be evaluated together" -->
 
 This is the most important finding. The verifier's promise is that "done" means
 *green + count-vs-baseline + live-path + demonstrated-red, stamped against the
@@ -110,7 +110,7 @@ exercised. What CI still cannot do is catch a hole that has *no eval case* —
 that is inherent to any test suite, and the reason the self-audit exists.
 
 ## 2. The boundary guards are a pattern matcher, not a sandbox
-<!-- clean-docs:allow section-length reason="The bypass table and boundary analysis define one threat-model constraint" -->
+<!-- sourcebound:allow section-length reason="The bypass table and boundary analysis define one threat-model constraint" -->
 
 `guard_bash.py` and `guard_files.py` decide allow/deny by matching the command
 or path string. This cannot be made sound, and the README says so for the shell
@@ -196,7 +196,7 @@ that *exist*. The manifest holes have no case, so the eval is green while they
 are open. The fix is to add cases for them once the mechanisms are built.
 
 ## 4. Code quality
-<!-- clean-docs:allow section-length reason="The code-quality findings and concrete repairs form one review section" -->
+<!-- sourcebound:allow section-length reason="The code-quality findings and concrete repairs form one review section" -->
 
 The code is clean for a portfolio, and the audit is worth stating because the
 *absence* of common problems is itself a finding:

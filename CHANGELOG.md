@@ -1,9 +1,9 @@
 # Changelog
 
-<!-- clean-docs:purpose -->
+<!-- sourcebound:purpose -->
 Use this changelog to review security-hardening changes made since the initial release. Each entry connects a reproduced failure to its fix and re-proof, giving you an auditable history of changed guarantees.
-<!-- clean-docs:end purpose -->
-<!-- clean-docs:allow doc-length reason="The changelog is the canonical chronological record of reproduced failures and their re-proof" -->
+<!-- sourcebound:end purpose -->
+<!-- sourcebound:allow doc-length reason="The changelog is the canonical chronological record of reproduced failures and their re-proof" -->
 
 Each change follows the kit's own
 process: an adversarial eval case that reproduces the hole (red), the minimal

@@ -1,8 +1,8 @@
 # Development and proof
 
-<!-- clean-docs:purpose -->
+<!-- sourcebound:purpose -->
 Use this guide when changing the lab or reproducing its release decision. It groups the supported lint, unit, manifest, smoke, browser, and adversarial lanes so a contributor can choose the proof proportional to the change.
-<!-- clean-docs:end purpose -->
+<!-- sourcebound:end purpose -->
 
 ## Commands
 
