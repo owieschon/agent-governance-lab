@@ -1,0 +1,19 @@
+name: clean-docs
+
+on:
+  pull_request:
+  push:
+    branches: [main]
+  schedule:
+    - cron: "17 5 * * *"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  clean-docs:
+    uses: owieschon/sourcebound/.github/workflows/reusable-sourcebound.yml@20e66ccfd660439b4a6ab4515c7787c051a33e7b
+    with:
+      package-ref: 20e66ccfd660439b4a6ab4515c7787c051a33e7b
+      check_name: clean-docs

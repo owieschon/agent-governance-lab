@@ -1,8 +1,8 @@
 # Evidence contract
 
-<!-- clean-docs:purpose -->
+<!-- sourcebound:purpose -->
 Use this contract when implementing a receipt producer, verifier, CLI, CI job, or evidence viewer. It defines the bytes and semantics each receipt must bind so presentation layers can report a release decision without acquiring authority to make one.
-<!-- clean-docs:end purpose -->
+<!-- sourcebound:end purpose -->
 
 `agl.receipt.v1` is the portable boundary between the governance engine and
 anything that presents its result. A CLI, CI job, or future UI may render a

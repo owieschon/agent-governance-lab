@@ -1,8 +1,8 @@
 # Claims and trust
 
-<!-- clean-docs:purpose -->
+<!-- sourcebound:purpose -->
 Use this reference when deciding what an Agent Governance Lab result proves. It separates fail-closed comparison behavior, excluded cases, bound evidence, and threats outside the cooperative-hook boundary so reviewers can keep claims inside the executable evidence.
-<!-- clean-docs:end purpose -->
+<!-- sourcebound:end purpose -->
 
 ## Refusal behavior
 
