@@ -1,8 +1,8 @@
 # Governor release log
 
-<!-- clean-docs:purpose -->
+<!-- sourcebound:purpose -->
 Use this ledger when reviewing or changing the governor trust layer. It identifies every permissive or restrictive change and its proof fingerprint so you can focus review on moments when release authority changed.
-<!-- clean-docs:end purpose -->
+<!-- sourcebound:end purpose -->
 
 This is an append-only, human-maintained ledger of changes to the **governor** — the
 trust layer the agent cannot edit (`rails/verifier/`, `.claude/hooks/`,

@@ -1,12 +1,12 @@
 # Detected repository surface
 
-<!-- clean-docs:purpose -->
+<!-- sourcebound:purpose -->
 Use this reference when distinguishing direct reader claims from repository catalog coverage. It exposes the detected source surface without implying that every internal symbol needs its own documentation page.
-<!-- clean-docs:end purpose -->
+<!-- sourcebound:end purpose -->
 
-This summary is generated from statically detected package, CLI, API, schema, and test surfaces. Run `clean-docs inventory` for the full catalog.
+This summary is generated from statically detected package, CLI, API, schema, and test surfaces. Run `sourcebound inventory` for the full catalog.
 
-<!-- clean-docs:begin repository-surface -->
+<!-- sourcebound:begin repository-surface -->
 | surface | discovered | examples |
 | --- | ---: | --- |
 | api-symbol | 109 | `ComparisonError`, `ReceiptError`, `WorktreeHashError`, and 106 more |
@@ -17,5 +17,5 @@ This summary is generated from statically detected package, CLI, API, schema, an
 | test-runner | 2 | `test:e2e`, `test:e2e:update` |
 | test-suite | 6 | `tests/browser/explorer.spec.js`, `tests/test_cli.py`, `tests/test_comparison.py`, and 3 more |
 
-<!-- clean-docs:inventory-sha256 15d0297089a938ec22a4afbfc4e957cf3b28a82cf6a1b0e2f7044bd93e54b087 -->
-<!-- clean-docs:end repository-surface -->
+<!-- sourcebound:inventory-sha256 15d0297089a938ec22a4afbfc4e957cf3b28a82cf6a1b0e2f7044bd93e54b087 -->
+<!-- sourcebound:end repository-surface -->
