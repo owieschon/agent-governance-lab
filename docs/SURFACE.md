@@ -4,7 +4,7 @@
 Use this reference when distinguishing direct reader claims from repository catalog coverage. It exposes the detected source surface without implying that every internal symbol needs its own documentation page.
 <!-- sourcebound:end purpose -->
 
-This summary is generated from statically detected package, CLI, API, schema, and test surfaces. Run `sourcebound inventory` for the full catalog.
+This summary is generated from statically detected package, CLI, API, schema, and test surfaces. Run `sourcebound inventory` for the full catalog. If the CLI is not installed, install the released tool with `pipx install sourcebound` (or run it once with `uvx sourcebound`); acquisition and trust boundaries are documented in the [Sourcebound repository](https://github.com/owieschon/sourcebound).
 
 <!-- sourcebound:begin repository-surface -->
 | surface | discovered | examples |

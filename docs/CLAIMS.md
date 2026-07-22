@@ -1,7 +1,7 @@
 # Claims and trust
 
 <!-- sourcebound:purpose -->
-Use this reference when deciding what an Agent Governance Lab result proves. It separates fail-closed comparison behavior, excluded cases, bound evidence, and threats outside the cooperative-hook boundary so reviewers can keep claims inside the executable evidence.
+Use this reference when deciding what an Agent Governance Lab result proves. It separates fail-closed comparison behavior, excluded cases, bound evidence, and threats outside the cooperative-hook boundary so claims stay inside the executable evidence.
 <!-- sourcebound:end purpose -->
 
 ## Refusal behavior
@@ -48,6 +48,16 @@ The explorer preserves that decision as `NO_CONFIRMATORY_RESULT`. It does not
 reuse the old implementation, private materials, or synthetic effect sizes, and
 does not rewrite repaired plumbing into a historical success.
 
+<!-- sourcebound:allow-inline-document target="METHODOLOGY.md" reason="The study record preserves this unresolved predecessor snapshot label" -->
+<!-- sourcebound:allow-inline-document target="RESULTS.md" reason="The study record preserves this second unresolved predecessor label" -->
+<!-- sourcebound:allow-inline-document target="docs/SOURCE_PROVENANCE.md" reason="The study record preserves this unresolved predecessor provenance label" -->
+The `public_snapshot_sources` filenames in
+`experiment/historical-study.json` came from a predecessor snapshot. Three of
+those paths (`METHODOLOGY.md`, `RESULTS.md`, and
+`docs/SOURCE_PROVENANCE.md`) do not exist in this repository's public Git
+history, so they are historical labels rather than resolvable provenance links.
+No public commit is claimed for them.
+
 ### Transport-fidelity engineering decision
 
 A separate real engineering case completed 127/127 judge items with zero
@@ -76,7 +86,7 @@ part of the synthetic comparison, any denominator, or a model-efficacy claim.
    code-anchored manifest for every mutable comparison source and schema.
 3. [`rails/agl/comparison.py`](../rails/agl/comparison.py) — deterministic executor,
    semantic receipt/result verification, and fail-closed analysis.
-4. [`explorer/index.html`](../explorer/index.html) — static, framework-free reviewer
+4. [`explorer/index.html`](../explorer/index.html) — static, framework-free inspection
    surface over the generated, content-addressed result;
    `trusted-release.js` anchors the build and `verification.js` recomputes the
    receipt-backed analysis in the browser.
