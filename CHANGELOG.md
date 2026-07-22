@@ -67,7 +67,7 @@ auditable and the suite stays green.
   live-path greps, declared test changes) and is written by the agent, so a
   post-approval rewrite let the agent grade itself against an answer key it
   changed. `snapshot.sh` now hashes the manifest at approval (next to the
-  test-file hashes it already records), it is wired into `dispatch.md`'s
+  test-file hashes it already records), it is wired into the `/dispatch`
   approval step, and `verify.sh`'s `manifest_complete` check fails on any
   post-approval drift; a real amendment re-approves, which re-snapshots. Proven
   by new case `52_manifest_frozen`. The *at-approval* decoy half (V1/V4) is

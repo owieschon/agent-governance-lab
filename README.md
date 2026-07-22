@@ -1,7 +1,7 @@
 # Agent Governance Lab
 
 <!-- sourcebound:purpose -->
-Use this repository when you need to test whether an independent release governor catches coding-agent violations that written rules and green tests miss. It gives reviewers a reproducible eight-case comparison with public receipts, bounded claims, and a deterministic release decision.
+Use this repository to test whether an independent release governor catches coding-agent violations that written rules and green tests miss. It provides a reproducible eight-case comparison with public receipts, bounded claims, and a deterministic release decision.
 <!-- sourcebound:end purpose -->
 
 [![smoke](https://github.com/owieschon/agent-governance-lab/actions/workflows/prove.yml/badge.svg)](https://github.com/owieschon/agent-governance-lab/actions/workflows/prove.yml)
@@ -23,7 +23,7 @@ Those are case counts, not population estimates. They do not measure
 productivity, model efficacy, real-world effectiveness, or hostile-agent
 containment.
 
-## Reviewer path: under 90 seconds
+## Reproduce the comparison in under 90 seconds
 
 ```bash
 ./bin/agl demo --receipt /tmp/oracle-tampering.json
@@ -40,7 +40,7 @@ receipt.
 
 **[Open the live evidence explorer](https://owieschon.github.io/agent-governance-lab/).**
 It runs the same build-embedded trust anchors and semantic receipt replay as the
-local reviewer path; no login or server-side state is required.
+local path; no login or server-side state is required.
 
 ## The mechanism
 
@@ -66,6 +66,13 @@ flowchart LR
     L3 --> R
     B -. "drift / missing label" .-> N
 ```
+
+Diagram: A code-anchored manifest defines the trusted inputs, engines, schemas, and verifiers for
+one canonical candidate envelope. The same candidate enters four arms: task only, written rules
+with ordinary tests, a visible but non-authoritative sham gate, and an enforced gate that can stop
+release. All four produce one case receipt with equal candidate digests. If the manifest drifts or
+an expected label is missing, the comparison produces `NO_CONFIRMATORY_RESULT` instead of headline
+metrics.
 
 The confirmatory contrast is L1 → L3. L0 preserves a task-only baseline. SHAM
 runs the same deterministic observation as L3 and binds the same evidence
@@ -95,14 +102,12 @@ The generator uses the real `verify.sh`, Stop gate, Bash guard, and file guard i
 disposable public fixtures. No private task, prompt, transcript, answer key,
 customer data, PII, or secret is read or required.
 
-## Claims and trust boundary
+## Documentation
 
-Read [Claims and trust](docs/CLAIMS.md) for refusal behavior, excluded cases,
-the integrity slice, and the exact bound and unbound claims.
-
-## Develop and prove
-
-Read [Development and proof](docs/DEVELOPMENT.md) for lint, unit, browser,
-manifest, smoke, and full adversarial commands.
+The [documentation index](docs/README.md) separates the comparison, receipt
+contract, development checks, installed-rails runbook, and generated source
+inventory. Start with [Claims and trust](docs/CLAIMS.md) for the exact bound and
+unbound claims, or [Development and proof](docs/DEVELOPMENT.md) to reproduce the
+repository gates.
 
 Apache-2.0 licensed. See [`LICENSE`](LICENSE).

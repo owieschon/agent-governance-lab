@@ -29,7 +29,7 @@ projections:
     summary: Canonical lab documentation with source bindings and declared context.
     include:
       - README.md
-      - AUDIT.md
+      - docs/README.md
       - docs/CLAIMS.md
       - docs/DEVELOPMENT.md
       - docs/EVIDENCE_CONTRACT.md
