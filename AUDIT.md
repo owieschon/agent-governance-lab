@@ -5,6 +5,11 @@ Use this audit when you need to decide which Agent Governance Lab claims hold un
 <!-- sourcebound:end purpose -->
 <!-- sourcebound:allow doc-length reason="The reproduced findings, repair state, and residual boundary form one canonical threat-model audit" -->
 
+> **Snapshot, not current authority.** This audit records commit
+> [`fd2b705`](https://github.com/owieschon/agent-governance-lab/commit/fd2b7057159b9f075ad5cfb25a9dbee3ac493d90)
+> as inspected on 2026-07-21. Use [`docs/CLAIMS.md`](docs/CLAIMS.md) for the
+> current assurance boundary.
+
 The audit was produced by pointing independent audit agents at the kit — four at the
 soundness of the trust layer (verifier, boundary guards, adversarial eval, and
 the experiment that originally motivated the design) and six at code quality
@@ -13,11 +18,11 @@ Every "exploitable" claim below was **reproduced in a disposable sandbox** that
 ran the kit's actual files; every code-quality finding was re-checked against
 the cited lines before being kept.
 
-The current result: **the kit closes every reproduced verifier hole for a
+The result at capture: **the kit closed every reproduced verifier hole for a
 cooperative agent that cuts corners, but an actively hostile process can still
 bypass in-process hooks.** The fixed rows below retain the original exploit and
-the repair receipt. The remaining boundary-class limits are current product
-constraints, not unresolved versions of the closed verifier findings.
+the repair receipt. The remaining boundary-class limits matched product
+constraints at capture, not unresolved versions of the closed verifier findings.
 
 ## Verdict summary
 
@@ -58,7 +63,7 @@ files per-path in `test_changes` (a declaration the human sees at the approval
 gate), proven by the rewritten case 14. (A related finding surfaced while
 fixing it: `snapshot.sh`, which records the approval-time test hashes the check
 compares against, is **not wired into the documented approval flow** —
-`dispatch.md` creates the `APPROVED` marker but never calls it — so the check is
+the `/dispatch` command creates the `APPROVED` marker but never calls it — so the check is
 inert outside the test fixture until that wiring is added. Tracked for the
 manifest-freeze work.)
 
@@ -70,7 +75,7 @@ gating behavior the eval proves.
 
 Manifest freeze (the **post-approval** half of V1/V2/V4/V5): `snapshot.sh` now
 hashes `manifest.json` at approval alongside the test files, it is wired into
-`dispatch.md`'s approval step, and `verify.sh`'s `manifest_complete` check fails
+the `/dispatch` approval step, and `verify.sh`'s `manifest_complete` check fails
 if the live manifest no longer matches that frozen hash. So the agent can no
 longer rewrite its own proof obligations (break plan, greps, declared test
 changes) after the human signs off — a real amendment goes back through
@@ -198,8 +203,8 @@ are open. The fix is to add cases for them once the mechanisms are built.
 ## 4. Code quality
 <!-- sourcebound:allow section-length reason="The code-quality findings and concrete repairs form one review section" -->
 
-The code is clean for a portfolio, and the audit is worth stating because the
-*absence* of common problems is itself a finding:
+The inspected snapshot had no retained clutter in the checked paths. That is a
+result for the named commit, not a continuing claim:
 
 - **No clutter.** No dead code, commented-out blocks, or abandoned scaffolding.
   The missing eval case numbers (13, 28, 29, 40) are a documented, intentional
