@@ -1,4 +1,4 @@
-"""Deterministic, fixed-protocol comparison of release-policy mechanisms.
+"""Deterministic, preregistered comparison of release-policy mechanisms.
 
 The comparison uses only the repository's public synthetic fixture and real
 verifier/guard entry points.  Expected labels are fixed corpus inputs.  A
@@ -481,14 +481,14 @@ def assess_protocol(
         reasons.append("corpus case ids are not unique")
     registered_ids = preregistration.get("corpus_case_ids")
     if case_ids != registered_ids:
-        reasons.append("corpus case order or membership differs from the fixed protocol")
+        reasons.append("corpus case order or membership differs from preregistration")
     treatment_ids = [item.get("id") for item in preregistration.get("treatments", []) if isinstance(item, dict)]
     if treatment_ids != list(POLICY_IDS):
-        reasons.append("treatment design is not the fixed L0/L1/SHAM/L3 order")
+        reasons.append("treatment design is not the preregistered L0/L1/SHAM/L3 order")
     if preregistration.get("confirmatory_contrast") != ["L1", "L3"]:
-        reasons.append("confirmatory contrast is not fixed as L1 versus L3")
+        reasons.append("confirmatory contrast is not preregistered as L1 versus L3")
     if preregistration.get("protocol_id") != PROTOCOL_ID:
-        reasons.append("protocol record differs from the trusted release")
+        reasons.append("preregistration protocol differs from the trusted release")
     return observed, expected, reasons
 
 
@@ -725,7 +725,7 @@ def _enforced_treatment(sandbox: Path, case: Mapping[str, Any]) -> dict[str, Any
     else:
         raise ComparisonError(f"unknown enforced mechanism: {mechanism}")
     if reason != expected_reason:
-        raise ComparisonError(f"mechanism reason {reason} differs from fixed value {expected_reason}")
+        raise ComparisonError(f"mechanism reason {reason} differs from preregistered {expected_reason}")
     return {
         "policy_id": "L3",
         "decision": decision,
@@ -1390,7 +1390,7 @@ def validate_result(
         or result.get("confirmatory_contrast") != preregistration.get("confirmatory_contrast")
         or result.get("treatments") != preregistration.get("treatments")
     ):
-        raise ComparisonError("comparison design differs from the bound protocol record")
+        raise ComparisonError("comparison design differs from the bound preregistration")
     if result.get("invalidity_reasons") != []:
         raise ComparisonError("confirmatory comparison carries invalidity reasons")
     denominators, metrics, summaries = _analysis_from_receipts(receipts)

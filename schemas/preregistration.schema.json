@@ -1,7 +1,7 @@
 {
   "$schema": "https://json-schema.org/draft/2020-12/schema",
   "$id": "https://owieschon.github.io/agent-governance-lab/schemas/preregistration.schema.json",
-  "title": "AGL fixed comparison protocol",
+  "title": "AGL comparison preregistration",
   "type": "object",
   "additionalProperties": false,
   "required": [

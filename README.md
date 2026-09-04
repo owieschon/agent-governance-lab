@@ -23,9 +23,14 @@ Those are case counts, not population estimates. They do not measure
 productivity, model efficacy, real-world effectiveness, or hostile-agent
 containment.
 
-This repository does not claim prospective preregistration. Public history
-first records the protocol and results together; [Claims and
-trust](docs/CLAIMS.md#protocol-provenance) records the provenance boundary.
+> **Provenance boundary:** Public commit
+> [`1fcb32d`](https://github.com/owieschon/agent-governance-lab/commit/1fcb32d15cff84a7be32ec9b5f8f31e4e104787b)
+> first records the protocol and results together. The v1 artifact's
+> `registered_at`, `locked_at`, date-bearing `protocol_id`, and preregistration
+> wording are self-declared metadata from that commit; public history does not
+> independently establish that they predate execution. Treat this as a fixed,
+> reproducible benchmark, not prospectively preregistered evidence. [Claims and
+> trust](docs/CLAIMS.md#protocol-provenance) defines the full boundary.
 
 ## Reproduce the comparison in under 90 seconds
 
