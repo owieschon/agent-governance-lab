@@ -33,7 +33,7 @@
     "terminal_tree_hashes_recomputed": true
   },
   "invalidity_reasons": [
-    "The preregistered variance probe was never dispatched.",
+    "The recorded variance probe was never dispatched.",
     "The planned mini-replication was never built.",
     "Runner and grader used incompatible terminal-tree hash algorithms, so the integrity fence refused every real record.",
     "The frozen calibration receipt was a placeholder rather than completed calibration evidence."
