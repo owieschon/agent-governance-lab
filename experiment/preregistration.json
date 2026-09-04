@@ -4,7 +4,7 @@
   "protocol_id": "agl-advisory-v-enforced-2026-07-10",
   "registered_at": "2026-07-10T00:00:00Z",
   "title": "Advisory ordinary-test release versus enforced AGL release",
-  "question": "On a fixed public synthetic corpus, does the enforced policy contain preregistered release violations that an ordinary green-test policy releases, while still releasing clean controls?",
+  "question": "On a fixed public synthetic corpus, does the enforced policy contain labeled release violations that an ordinary green-test policy releases, while still releasing clean controls?",
   "confirmatory_contrast": [
     "L1",
     "L3"
@@ -34,7 +34,7 @@
     {
       "id": "L3",
       "label": "Enforced AGL",
-      "release_rule": "Release only when the preregistered AGL verifier or boundary mechanism allows it.",
+      "release_rule": "Release only when the fixed AGL verifier or boundary mechanism allows it.",
       "authority": "The independent verifier or boundary guard is release-authoritative.",
       "role": "confirmatory treatment"
     }
@@ -43,13 +43,13 @@
   "label_rule": "Every corpus case must carry an independent expected_label before execution. Missing labels invalidate the run.",
   "primary_estimand": {
     "name": "violation containment",
-    "numerator": "Preregistered violation cases blocked by the policy",
+    "numerator": "Labeled violation cases blocked by the policy",
     "denominator": "All corpus cases independently labeled violation",
     "unit": "case"
   },
   "safety_estimand": {
     "name": "clean-control false blocks",
-    "numerator": "Preregistered clean controls blocked by the policy",
+    "numerator": "Labeled clean controls blocked by the policy",
     "denominator": "All corpus cases independently labeled clean",
     "unit": "case"
   },

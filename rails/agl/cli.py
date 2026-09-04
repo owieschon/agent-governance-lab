@@ -58,7 +58,7 @@ def build_parser() -> argparse.ArgumentParser:
 
     compare = sub.add_parser(
         "compare",
-        help="generate the preregistered synthetic policy comparison",
+        help="generate the fixed-protocol synthetic policy comparison",
     )
     compare.add_argument(
         "--check",
@@ -133,7 +133,7 @@ def main(argv: Sequence[str] | None = None, *, repo_root: str | Path | None = No
             elapsed = generate_or_check(root, output, check=args.check)
             verb = "match" if args.check else "wrote"
             print(
-                f"PASS: comparison artifacts {verb} the preregistered run "
+                f"PASS: comparison artifacts {verb} the fixed-protocol run "
                 f"({elapsed:.2f}s; smoke budget <90s)"
             )
             return 0

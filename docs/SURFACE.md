@@ -15,7 +15,7 @@ This summary is generated from statically detected package, CLI, API, schema, an
 | package | 1 | `agent-governance-lab-explorer-tests` |
 | schema | 24 | `A completed run set that did not earn a result`, `A test silently disappears`, `AGL comparison binding lock`, and 21 more |
 | test-runner | 2 | `test:e2e`, `test:e2e:update` |
-| test-suite | 6 | `tests/browser/explorer.spec.js`, `tests/test_cli.py`, `tests/test_comparison.py`, and 3 more |
+| test-suite | 7 | `tests/browser/explorer.spec.js`, `tests/test_cli.py`, `tests/test_comparison.py`, and 4 more |
 
-<!-- sourcebound:inventory-sha256 15d0297089a938ec22a4afbfc4e957cf3b28a82cf6a1b0e2f7044bd93e54b087 -->
+<!-- sourcebound:inventory-sha256 41e0941ca334838a330baaa9d27d0a14e363970856118d98b526060823a97433 -->
 <!-- sourcebound:end repository-surface -->

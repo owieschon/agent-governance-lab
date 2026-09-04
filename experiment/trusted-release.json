@@ -18,11 +18,11 @@
     },
     {
       "path": "experiment/bindings.json",
-      "sha256": "25ec767cfbc07ac69eb84a43306305e3deb3a7eec1d48b7c94060bc530eeef95"
+      "sha256": "138180a4ca3f9e4369b77ea16862b0dd9f6265e2dd2192ad4be6b9fd0b8d79f7"
     },
     {
       "path": "experiment/corpus.json",
-      "sha256": "b6edbe5a33e2a61a179d4bd322df069e5eea0f548606832d49461f68f19bf8de"
+      "sha256": "64199a10bbb6c892c0a5353b2a760a9f46c294ce7d7b5e6fad41a0403856636a"
     },
     {
       "path": "experiment/engineering-decision.json",
@@ -30,11 +30,11 @@
     },
     {
       "path": "experiment/historical-study.json",
-      "sha256": "c0bb50368281936aafb778dd33d5ea7ddad6b23ddf51432eb42574b11b375168"
+      "sha256": "ed1c9a85527907ba162550f477d62386eea8c4291ff8a5f72ac91266b9ad2876"
     },
     {
       "path": "experiment/preregistration.json",
-      "sha256": "737d2a626b8d2fc37040ec6f5b0c6aef5283dbd49e41fe62a513eaf7ace6b848"
+      "sha256": "fb277649d4e21530239321be3d427309901dacb6c6c29f00e4b21f64b93235f0"
     },
     {
       "path": "explorer/app.js",
@@ -42,7 +42,7 @@
     },
     {
       "path": "explorer/index.html",
-      "sha256": "737fa4dc690208967fe6519513b3aa1e0db8b4a343f3f22a4a6cd3a26097152a"
+      "sha256": "41c3c9dec3c770d068c95333f9ff40913dad5e2799d2342f998ced7c05e5bba2"
     },
     {
       "path": "explorer/styles.css",
@@ -58,11 +58,11 @@
     },
     {
       "path": "rails/agl/cli.py",
-      "sha256": "c15eb44c441c26b009628a77d4c576d36c2c620935a72b9d0dc1ac92feea0228"
+      "sha256": "855365d75e1376b98d7a96bc1a831a6332c5108759237740f302c2d44d8f05d4"
     },
     {
       "path": "rails/agl/comparison.py",
-      "sha256": "86636b76ccafc1b852cba2b5c9b8cc6820653a8aef0d876b83d67ccfad1c1d6f"
+      "sha256": "8472e02cd16ff9e92f40414369bcd5615d8480a56c14780d712abe997894451d"
     },
     {
       "path": "rails/verifier/verify.sh",
@@ -94,7 +94,7 @@
     },
     {
       "path": "schemas/preregistration.schema.json",
-      "sha256": "27619c2d719486a407ae9821ea551fd38dbfbfb43edc44c12e6f52874473a248"
+      "sha256": "55a89241f425ad13d8a6b010ac9e25aa8b00b749bcf36df0289f1d2ff88e3ab3"
     },
     {
       "path": "schemas/trusted-release.schema.json",

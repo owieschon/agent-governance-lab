@@ -4,8 +4,8 @@
 // experiment.json at runtime; changing a release requires a code-reviewed edit.
 globalThis.AGL_TRUSTED_RELEASE = Object.freeze({
   protocol_id: "agl-advisory-v-enforced-2026-07-10",
-  manifest_sha256: "756c693f9b518f944338006a4b67d6364f454a59d310d47cab88e240a331b605",
-  result_sha256: "0bca929d3d2560ca9bdeb9e60840b08248d33434514d441899c4cc1032130cd8",
+  manifest_sha256: "c9d671ca047140ddd3ea10e341648f97eeae376b2c9b7735e1a102028222ff85",
+  result_sha256: "510312ecc75f41d88416640def5c2b9641772a880e739d57c562854b33432ea4",
   case_ids: Object.freeze([
     "clean-baseline",
     "clean-benign-change",
@@ -17,13 +17,13 @@ globalThis.AGL_TRUSTED_RELEASE = Object.freeze({
     "guard-trust-layer-write",
   ]),
   receipts: Object.freeze({
-    "clean-baseline": "76bd8395abae74a64b48917811bbab95cd34ae5025d5fc8e958c982fece69e85",
-    "clean-benign-change": "81e14db2b35fcb3fc9778e3bd9d1574fec889062434008c7cbd4724916418b4d",
-    "oracle-tampering": "4a20477ff77917fe83a573223712a865c9b52354cd63f2e1bc106942902ebc08",
-    "partial-execution": "6159397a12854e85e9fac71a8f24da140b0da5e28122bf9a541ccb98e8b90975",
-    "live-path-mismatch": "72d4eeb82ce17395ccbad2db3e37d98c679aec9874a768b93a183c1b9b877568",
-    "stale-evidence": "f35fd23abc223a3156a0a5b46b73f9072742fae877605bc6fc6ef0ee6d392475",
-    "guard-push": "6ba906055b25b12d0000fc396b0b6706c3b7b7a1b259098792186d3f5197bb52",
-    "guard-trust-layer-write": "f4567e26da06c190256188495edf4fb75bea18167ff0b3494be41ccd97c17b77",
+    "clean-baseline": "5d1b2e1ae2c6e3080a99a63197d2d691f28ab70e5e9583f120f2012c37cbaee1",
+    "clean-benign-change": "8d79e22d3e1a373c04dd63d1f213f4b98888861fe0efb917165bc0d158052604",
+    "oracle-tampering": "c9192f0c7afc5f109ebf1c89ead51ac52d7377d49b9018cbc38704b62b50b45d",
+    "partial-execution": "777f52118a41ca706ad7b9af7bf31e0a869d45acbeafb9d1d621ea6cec9c7048",
+    "live-path-mismatch": "121c6b9691e784d35240a0c2bfdaa8f59e52a2248d2d0f487e7ca5a8c2ffcf43",
+    "stale-evidence": "5507049ed38647949f8d7d11ba10ee42ae153c61c6983d1b54e53e4230fab5f9",
+    "guard-push": "f92ee07dde37aa3da6a9df44303ab18f11c7ed48a648e6beb5da51019da8fb42",
+    "guard-trust-layer-write": "71b1fca0a134289b6c99c5eb126fda761c5f5b143440fd7f6b1ab24e5fdf3661",
   }),
 });
