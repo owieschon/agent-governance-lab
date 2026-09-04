@@ -40,7 +40,7 @@ jobs:
         run: python3 scripts/render_trusted_release.py --check
       - name: Strictly validate the separate engineering decision
         run: ./bin/agl verify-engineering-case
-      - name: Re-run the fixed-protocol comparison and check exact artifacts
+      - name: Re-run the preregistered comparison and check exact artifacts
         run: ./bin/agl compare --check
 
   browser:

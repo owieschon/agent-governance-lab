@@ -6,7 +6,7 @@
   "status": "CONFIRMATORY_RESULT",
   "headline_eligible": true,
   "scope": "public synthetic mechanism demonstration",
-  "question": "On a fixed public synthetic corpus, does the enforced policy contain labeled release violations that an ordinary green-test policy releases, while still releasing clean controls?",
+  "question": "On a fixed public synthetic corpus, does the enforced policy contain preregistered release violations that an ordinary green-test policy releases, while still releasing clean controls?",
   "confirmatory_contrast": [
     "L1",
     "L3"
@@ -36,25 +36,25 @@
     {
       "id": "L3",
       "label": "Enforced AGL",
-      "release_rule": "Release only when the fixed AGL verifier or boundary mechanism allows it.",
+      "release_rule": "Release only when the preregistered AGL verifier or boundary mechanism allows it.",
       "authority": "The independent verifier or boundary guard is release-authoritative.",
       "role": "confirmatory treatment"
     }
   ],
   "bindings": {
     "expected": {
-      "preregistration_sha256": "fb277649d4e21530239321be3d427309901dacb6c6c29f00e4b21f64b93235f0",
-      "corpus_sha256": "64199a10bbb6c892c0a5353b2a760a9f46c294ce7d7b5e6fad41a0403856636a",
-      "engine_sha256": "d4f1c9c1e26230dbc459c22fbc5535467e0ebcf4b7a86ef339a7b19a491fdfc3",
-      "schemas_sha256": "5cd8720f54877ee27de0a71345cacdc9d01390b045b7fae2ad5725f2836b8bf0",
-      "trusted_release_sha256": "c9d671ca047140ddd3ea10e341648f97eeae376b2c9b7735e1a102028222ff85"
+      "preregistration_sha256": "737d2a626b8d2fc37040ec6f5b0c6aef5283dbd49e41fe62a513eaf7ace6b848",
+      "corpus_sha256": "b6edbe5a33e2a61a179d4bd322df069e5eea0f548606832d49461f68f19bf8de",
+      "engine_sha256": "fc090b13ddf09b939cfab59d15c14d9c48eb61686f82ba2d5c8a8c01692dbe46",
+      "schemas_sha256": "e5f493cf4e55f32b62e11c6a5e71f75e7afade11a8c63a27ff85254a29acf845",
+      "trusted_release_sha256": "756c693f9b518f944338006a4b67d6364f454a59d310d47cab88e240a331b605"
     },
     "observed": {
-      "preregistration_sha256": "fb277649d4e21530239321be3d427309901dacb6c6c29f00e4b21f64b93235f0",
-      "corpus_sha256": "64199a10bbb6c892c0a5353b2a760a9f46c294ce7d7b5e6fad41a0403856636a",
-      "engine_sha256": "d4f1c9c1e26230dbc459c22fbc5535467e0ebcf4b7a86ef339a7b19a491fdfc3",
-      "schemas_sha256": "5cd8720f54877ee27de0a71345cacdc9d01390b045b7fae2ad5725f2836b8bf0",
-      "trusted_release_sha256": "c9d671ca047140ddd3ea10e341648f97eeae376b2c9b7735e1a102028222ff85"
+      "preregistration_sha256": "737d2a626b8d2fc37040ec6f5b0c6aef5283dbd49e41fe62a513eaf7ace6b848",
+      "corpus_sha256": "b6edbe5a33e2a61a179d4bd322df069e5eea0f548606832d49461f68f19bf8de",
+      "engine_sha256": "fc090b13ddf09b939cfab59d15c14d9c48eb61686f82ba2d5c8a8c01692dbe46",
+      "schemas_sha256": "e5f493cf4e55f32b62e11c6a5e71f75e7afade11a8c63a27ff85254a29acf845",
+      "trusted_release_sha256": "756c693f9b518f944338006a4b67d6364f454a59d310d47cab88e240a331b605"
     }
   },
   "invalidity_reasons": [],
@@ -155,7 +155,7 @@
         }
       },
       "receipt_path": "data/receipts/clean-baseline.json",
-      "receipt_sha256": "5d1b2e1ae2c6e3080a99a63197d2d691f28ab70e5e9583f120f2012c37cbaee1"
+      "receipt_sha256": "76bd8395abae74a64b48917811bbab95cd34ae5025d5fc8e958c982fece69e85"
     },
     {
       "id": "clean-benign-change",
@@ -183,7 +183,7 @@
         }
       },
       "receipt_path": "data/receipts/clean-benign-change.json",
-      "receipt_sha256": "8d79e22d3e1a373c04dd63d1f213f4b98888861fe0efb917165bc0d158052604"
+      "receipt_sha256": "81e14db2b35fcb3fc9778e3bd9d1574fec889062434008c7cbd4724916418b4d"
     },
     {
       "id": "oracle-tampering",
@@ -211,7 +211,7 @@
         }
       },
       "receipt_path": "data/receipts/oracle-tampering.json",
-      "receipt_sha256": "c9192f0c7afc5f109ebf1c89ead51ac52d7377d49b9018cbc38704b62b50b45d"
+      "receipt_sha256": "4a20477ff77917fe83a573223712a865c9b52354cd63f2e1bc106942902ebc08"
     },
     {
       "id": "partial-execution",
@@ -239,7 +239,7 @@
         }
       },
       "receipt_path": "data/receipts/partial-execution.json",
-      "receipt_sha256": "777f52118a41ca706ad7b9af7bf31e0a869d45acbeafb9d1d621ea6cec9c7048"
+      "receipt_sha256": "6159397a12854e85e9fac71a8f24da140b0da5e28122bf9a541ccb98e8b90975"
     },
     {
       "id": "live-path-mismatch",
@@ -267,7 +267,7 @@
         }
       },
       "receipt_path": "data/receipts/live-path-mismatch.json",
-      "receipt_sha256": "121c6b9691e784d35240a0c2bfdaa8f59e52a2248d2d0f487e7ca5a8c2ffcf43"
+      "receipt_sha256": "72d4eeb82ce17395ccbad2db3e37d98c679aec9874a768b93a183c1b9b877568"
     },
     {
       "id": "stale-evidence",
@@ -295,7 +295,7 @@
         }
       },
       "receipt_path": "data/receipts/stale-evidence.json",
-      "receipt_sha256": "5507049ed38647949f8d7d11ba10ee42ae153c61c6983d1b54e53e4230fab5f9"
+      "receipt_sha256": "f35fd23abc223a3156a0a5b46b73f9072742fae877605bc6fc6ef0ee6d392475"
     },
     {
       "id": "guard-push",
@@ -323,7 +323,7 @@
         }
       },
       "receipt_path": "data/receipts/guard-push.json",
-      "receipt_sha256": "f92ee07dde37aa3da6a9df44303ab18f11c7ed48a648e6beb5da51019da8fb42"
+      "receipt_sha256": "6ba906055b25b12d0000fc396b0b6706c3b7b7a1b259098792186d3f5197bb52"
     },
     {
       "id": "guard-trust-layer-write",
@@ -351,7 +351,7 @@
         }
       },
       "receipt_path": "data/receipts/guard-trust-layer-write.json",
-      "receipt_sha256": "71b1fca0a134289b6c99c5eb126fda761c5f5b143440fd7f6b1ab24e5fdf3661"
+      "receipt_sha256": "f4567e26da06c190256188495edf4fb75bea18167ff0b3494be41ccd97c17b77"
     }
   ],
   "context": {
@@ -391,7 +391,7 @@
           "terminal_tree_hashes_recomputed": true
         },
         "invalidity_reasons": [
-          "The recorded variance probe was never dispatched.",
+          "The preregistered variance probe was never dispatched.",
           "The planned mini-replication was never built.",
           "Runner and grader used incompatible terminal-tree hash algorithms, so the integrity fence refused every real record.",
           "The frozen calibration receipt was a placeholder rather than completed calibration evidence."
@@ -410,7 +410,7 @@
           "docs/SOURCE_PROVENANCE.md"
         ]
       },
-      "sha256": "ed1c9a85527907ba162550f477d62386eea8c4291ff8a5f72ac91266b9ad2876"
+      "sha256": "c0bb50368281936aafb778dd33d5ea7ddad6b23ddf51432eb42574b11b375168"
     },
     "engineering_decision": {
       "record": {
@@ -467,5 +467,5 @@
     "headline_metrics": null
   },
   "claim_boundary": "Fixed synthetic mechanism counts only. No productivity, model-efficacy, population, or real-world effect claim is made.",
-  "result_sha256": "510312ecc75f41d88416640def5c2b9641772a880e739d57c562854b33432ea4"
+  "result_sha256": "0bca929d3d2560ca9bdeb9e60840b08248d33434514d441899c4cc1032130cd8"
 }

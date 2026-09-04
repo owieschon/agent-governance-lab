@@ -12,13 +12,12 @@ first appear together in public commit
 Public history therefore establishes a fixed, content-addressed benchmark that
 can be rerun. It does not establish that the protocol predates execution.
 
-The paths `experiment/preregistration.json` and
-`schemas/preregistration.schema.json`, the schema version, and the
-`preregistration_sha256` binding are retained as v1 compatibility identifiers.
-The `confirmatory_contrast`, `CONFIRMATORY_RESULT`, and
-`NO_CONFIRMATORY_RESULT` identifiers are retained for the same reason. These
-names select the fixed analysis branch; they do not assert prospective
-chronology.
+The v1 artifact's `registered_at` and `locked_at` values, date-bearing
+`protocol_id`, preregistration wording, and `confirmatory` identifiers are
+legacy, self-declared metadata first published in that same commit. No earlier
+public commit independently establishes their chronology. They remain
+unchanged in the bound protocol, receipts, generated result, and explorer so
+this correction does not rewrite the evidence it qualifies.
 
 ## Refusal behavior
 
