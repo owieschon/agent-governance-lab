@@ -260,6 +260,7 @@ longer trusts an answer key the agent wrote), keeps dangerous operations out of
 the loop's reach, and gives you a running, inspectable proof that its checks
 fire. For an agent you do **not** trust, don't rely on the in-process guards
 alone — run it under the [`isolate/`](isolate/) container companion, where the
-trust layer is read-only and the network is off at the kernel level. The one
-verifier soundness gap still open is V6 (untracked-file content isn't in the
-freshness hash); it is documented above, not hidden.
+trust layer is read-only and the network is off at the kernel level. V6 is
+closed: the freshness hash includes untracked file content, and case 54 proves
+that a post-PASS content swap invalidates the verdict. The unresolved
+in-process limit is the interpreter-write class B4, not freshness.
