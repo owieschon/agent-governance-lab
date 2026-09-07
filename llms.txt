@@ -4,8 +4,8 @@
 
 ## Canonical documentation
 
-- [README.md](README.md): bindings: comparison-executor; sha256: eb4df171c6911b5b21db1d0314040962a321fb5b585c1e225c0c43b068329586
-- [docs/CLAIMS.md](docs/CLAIMS.md): bindings: receipt-verifier, trusted-release-renderer; sha256: e4a46afc144964bf6fbbd553d6c1de0a953703dac08578b349df04001f1648ec
+- [README.md](README.md): bindings: comparison-executor; sha256: 8262843bd5091bddb8b2e5d1cb7311ba2083d04d5b0ea4a5668c2b744e0483f4
+- [docs/CLAIMS.md](docs/CLAIMS.md): bindings: receipt-verifier, trusted-release-renderer; sha256: 298804758054902833f642b0e2d28e239a3c25f2c60863257b1600db29061183
 - [docs/DEVELOPMENT.md](docs/DEVELOPMENT.md): declared canonical context; sha256: fab5aa885578a8b650273b8707c60ea67f7b4a7a0bb0974973db1124d637b492
 - [docs/EVIDENCE_CONTRACT.md](docs/EVIDENCE_CONTRACT.md): declared canonical context; sha256: 2420f43bf8726cb598174676f237631391954b3835cc4c896e7f6353b0a61ee9
 - [docs/OPERATING.md](docs/OPERATING.md): declared canonical context; sha256: 79c40587e9769070c0c07e28c8be3f58bb6a18b99246bb9abb0ff42487e5dba4

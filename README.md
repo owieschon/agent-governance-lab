@@ -10,8 +10,8 @@ Use this repository to test whether an independent release governor catches codi
 
 One immutable candidate envelope goes to four treatment arms. Written rules and
 ordinary green tests can advise release; the enforced arm gives a deterministic,
-independent mechanism authority to stop it. The comparison is preregistered,
-synthetic, and executable from this repository.
+independent mechanism authority to stop it. The comparison uses a fixed,
+content-addressed protocol and is executable from this repository.
 
 On the fixed eight-case corpus:
 
@@ -22,6 +22,15 @@ On the fixed eight-case corpus:
 Those are case counts, not population estimates. They do not measure
 productivity, model efficacy, real-world effectiveness, or hostile-agent
 containment.
+
+> **Provenance boundary:** Public commit
+> [`1fcb32d`](https://github.com/owieschon/agent-governance-lab/commit/1fcb32d15cff84a7be32ec9b5f8f31e4e104787b)
+> first records the protocol and results together. The v1 artifact's
+> `registered_at`, `locked_at`, date-bearing `protocol_id`, and preregistration
+> wording are self-declared metadata from that commit; public history does not
+> independently establish that they predate execution. Treat this as a fixed,
+> reproducible benchmark, not prospectively preregistered evidence. [Claims and
+> trust](docs/CLAIMS.md#protocol-provenance) defines the full boundary.
 
 ## Reproduce the comparison in under 90 seconds
 
@@ -74,13 +83,13 @@ release. All four produce one case receipt with equal candidate digests. If the 
 an expected label is missing, the comparison produces `NO_CONFIRMATORY_RESULT` instead of headline
 metrics.
 
-The confirmatory contrast is L1 → L3. L0 preserves a task-only baseline. SHAM
+The primary contrast is L1 → L3. L0 preserves a task-only baseline. SHAM
 runs the same deterministic observation as L3 and binds the same evidence
 digest, but always releases; this separates visibility from authority.
 
 ## What is in the corpus
 
-Two clean controls and six preregistered violations exercise public mechanisms
+Two clean controls and six labeled violations exercise public mechanisms
 already executable here:
 
 | Family | Synthetic case | L1 | L3 |

@@ -4,17 +4,32 @@
 Use this reference when deciding what an Agent Governance Lab result proves. It separates fail-closed comparison behavior, excluded cases, bound evidence, and threats outside the cooperative-hook boundary so claims stay inside the executable evidence.
 <!-- sourcebound:end purpose -->
 
+## Protocol provenance
+
+The protocol document, corpus, comparison implementation, receipts, and result
+first appear together in public commit
+[`1fcb32d`](https://github.com/owieschon/agent-governance-lab/commit/1fcb32d15cff84a7be32ec9b5f8f31e4e104787b).
+Public history therefore establishes a fixed, content-addressed benchmark that
+can be rerun. It does not establish that the protocol predates execution.
+
+The v1 artifact's `registered_at` and `locked_at` values, date-bearing
+`protocol_id`, preregistration wording, and `confirmatory` identifiers are
+legacy, self-declared metadata first published in that same commit. No earlier
+public commit independently establishes their chronology. They remain
+unchanged in the bound protocol, receipts, generated result, and explorer so
+this correction does not rewrite the evidence it qualifies.
+
 ## Refusal behavior
 
 `rails/agl/trust_anchor.py` pins the digest of
 `experiment/trusted-release.json`; the manifest in turn binds the mutable lock,
-preregistration, corpus, context records, executable engines, Python/browser
+protocol record, corpus, context records, executable engines, Python/browser
 verifiers, and every analysis schema. `experiment/bindings.json` is a derived,
 manifest-bound readout—not its own source of truth. Before any headline
 analysis, the generator requires:
 
 1. exact binding matches;
-2. the preregistered case order;
+2. the fixed case order;
 3. an independent `clean` or `violation` label for every case;
 4. successful execution of every mechanism; and
 5. identical candidate-envelope SHA-256 values across L0, L1, SHAM, and L3.
