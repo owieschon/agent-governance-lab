@@ -4,7 +4,7 @@
 
 ## Canonical documentation
 
-- [README.md](README.md): bindings: comparison-executor; sha256: 8262843bd5091bddb8b2e5d1cb7311ba2083d04d5b0ea4a5668c2b744e0483f4
+- [README.md](README.md): bindings: comparison-executor; sha256: 7ddc6b287f928864c891207d351fd4ec675404fc1dccf560552fc00afff25544
 - [docs/CLAIMS.md](docs/CLAIMS.md): bindings: receipt-verifier, trusted-release-renderer; sha256: 298804758054902833f642b0e2d28e239a3c25f2c60863257b1600db29061183
 - [docs/DEVELOPMENT.md](docs/DEVELOPMENT.md): declared canonical context; sha256: fab5aa885578a8b650273b8707c60ea67f7b4a7a0bb0974973db1124d637b492
 - [docs/EVIDENCE_CONTRACT.md](docs/EVIDENCE_CONTRACT.md): declared canonical context; sha256: 2420f43bf8726cb598174676f237631391954b3835cc4c896e7f6353b0a61ee9
