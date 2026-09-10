@@ -8,6 +8,11 @@ Use this repository to test whether an independent release governor catches codi
 
 **Independent release governance for coding-agent work, with public receipts.**
 
+In plain terms: an AI coding agent can break a project's rules while its tests
+still pass. This lab checks whether an automated release gate stops those
+changes when written rules and ordinary tests do not. It runs both approaches on
+eight fixed cases, and you can reproduce the result in under 90 seconds.
+
 One immutable candidate envelope goes to four treatment arms. Written rules and
 ordinary green tests can advise release; the enforced arm gives a deterministic,
 independent mechanism authority to stop it. The comparison uses a fixed,
